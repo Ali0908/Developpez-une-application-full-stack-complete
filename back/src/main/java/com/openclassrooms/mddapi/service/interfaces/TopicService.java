@@ -1,4 +1,4 @@
-package com.openclassrooms.mddapi.service;
+package com.openclassrooms.mddapi.service.interfaces;
 
 import com.openclassrooms.mddapi.dto.TopicDto;
 
