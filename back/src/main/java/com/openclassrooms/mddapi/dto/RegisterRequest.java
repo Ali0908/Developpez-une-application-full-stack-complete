@@ -1,5 +1,6 @@
 package com.openclassrooms.mddapi.dto;
 
+import com.openclassrooms.mddapi.validation.ValidPassword;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,6 +18,6 @@ public class RegisterRequest {
     @Email(message = "Email should be valid")
     @NotBlank(message = "Email is mandatory")
     private String email;
-    @NotBlank(message = "Password is required")
+    @ValidPassword
     private String password;
 }
