@@ -10,9 +10,12 @@ import {MatIconModule} from "@angular/material/icon";
 import { TopicComponent } from './pages/topic/topic/topic.component';
 import {MatCardModule} from "@angular/material/card";
 import {HttpClientModule} from "@angular/common/http";
+import { RegisterComponent } from './pages/register/register/register.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, TopicComponent],
+  declarations: [AppComponent, HomeComponent, TopicComponent, RegisterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,6 +25,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatIconModule,
     MatCardModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
