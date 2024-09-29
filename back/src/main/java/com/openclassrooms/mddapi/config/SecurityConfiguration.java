@@ -34,7 +34,8 @@ public class SecurityConfiguration {
     private final TokenRepository tokenRepository;
     private final UserRepository repository;
 
-    public static final String[] WHITE_LIST_URL = {"/api/auth/**",
+    public static final String[] WHITE_LIST_URL = {"/api/auth/register",
+            "/api/auth/login",
             "/api/topics",
     };
 
