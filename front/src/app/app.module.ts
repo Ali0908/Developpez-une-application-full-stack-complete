@@ -13,9 +13,10 @@ import {HttpClientModule} from "@angular/common/http";
 import { RegisterComponent } from './pages/register/register/register.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import { LoginComponent } from './pages/login/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, TopicComponent, RegisterComponent],
+  declarations: [AppComponent, HomeComponent, TopicComponent, RegisterComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
