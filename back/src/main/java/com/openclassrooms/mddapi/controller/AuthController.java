@@ -1,7 +1,6 @@
 package com.openclassrooms.mddapi.controller;
 
-import com.openclassrooms.mddapi.dto.AuthDtoResponse;
-import com.openclassrooms.mddapi.dto.UserDtoResponse;
+import com.openclassrooms.mddapi.dto.*;
 import com.openclassrooms.mddapi.exceptions.BadRequestException;
 import com.openclassrooms.mddapi.exceptions.UnauthorizedRequestException;
 import com.openclassrooms.mddapi.service.interfaces.AuthService;
@@ -11,8 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import com.openclassrooms.mddapi.dto.RegisterDtoRequest;
-import com.openclassrooms.mddapi.dto.LoginDtoRequest;
 import org.springframework.validation.ObjectError;
 
 
@@ -62,5 +59,10 @@ public class AuthController {
     @GetMapping("/me")
     public Optional<UserDtoResponse> authenticate() {
         return authSrv.authenticate();
+    }
+
+    @PutMapping("/me")
+    public Optional<UserDtoResponse> update(@RequestBody UserDto userDto) {
+        return authSrv.update(userDto);
     }
 }

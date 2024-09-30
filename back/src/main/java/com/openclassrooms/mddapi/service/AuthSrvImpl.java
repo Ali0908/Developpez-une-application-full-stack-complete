@@ -1,10 +1,7 @@
 package com.openclassrooms.mddapi.service;
 
 import com.openclassrooms.mddapi.config.TokenType;
-import com.openclassrooms.mddapi.dto.LoginDtoRequest;
-import com.openclassrooms.mddapi.dto.RegisterDtoRequest;
-import com.openclassrooms.mddapi.dto.AuthDtoResponse;
-import com.openclassrooms.mddapi.dto.UserDtoResponse;
+import com.openclassrooms.mddapi.dto.*;
 import com.openclassrooms.mddapi.model.Token;
 import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.repository.UserRepository;
@@ -92,6 +89,18 @@ public class AuthSrvImpl implements AuthService {
                 user.getEmail()
         ));
 
+    }
+
+    public Optional<UserDtoResponse> update(UserDto userDto) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user.setUsername(userDto.getUsername());
+        user.setEmail(userDto.getEmail());
+        userRepository.save(user);
+        return Optional.of(new UserDtoResponse(
+                user.getId(),
+                user.getUsername(),
+                user.getEmail()
+        ));
     }
     private void revokeAllUserTokens(User user) {
         var validUserTokens = tokenRepository.findAllValidTokenByUser(Math.toIntExact(user.getId()));
