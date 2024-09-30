@@ -52,6 +52,21 @@ public class TopicSvrImpl implements TopicService {
         }
     }
 
+    public void unsubscribeToTopic(SubscribeToTopicDto dto) {
+        User user = userRepository.findById(dto.getUserId())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        Topic topic = topicRepository.findById(dto.getTopicId())
+                .orElseThrow(() -> new EntityNotFoundException("Topic not found"));
+
+        if (user.getTopics().contains(topic)) {
+            user.getTopics().remove(topic);
+            userRepository.save(user);  // persist the new topic subscription
+        } else {
+            throw new IllegalStateException("User is not subscribed to this topic");
+        }
+    }
+
 
     public List<TopicDtoResponse> getAllTopicsSubscribedByUserId(Integer userId) {
         User user = userRepository.findById(userId)

@@ -26,6 +26,12 @@ public class TopicController {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/unsubscribe")
+    public ResponseEntity<Void> unsubscribeToTopic(@RequestBody SubscribeToTopicDto dto) {
+        topicService.unsubscribeToTopic(dto);
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping("/subscribe/{userId}")
     public ResponseEntity<List<TopicDtoResponse>> getAllTopicsSubscribedByUserId(@PathVariable Integer userId) {
         List<TopicDtoResponse> topics = topicService.getAllTopicsSubscribedByUserId(userId);

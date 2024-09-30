@@ -20,6 +20,12 @@ public interface TopicService {
     void subscribeToTopic(SubscribeToTopicDto dto);
 
     /**
+     * Unsubscribe to a topic
+     * @param dto the topic to unsubscribe to
+     */
+    void unsubscribeToTopic(SubscribeToTopicDto dto);
+
+    /**
      * Get all topics subscribed by a user
      * @param userId the user id
      * @return a list of topics
