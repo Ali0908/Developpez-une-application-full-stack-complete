@@ -22,4 +22,7 @@ public class Topic {
 
     @ManyToMany(mappedBy = "topics")
     public List<User> user;
+
+    @OneToMany(mappedBy = "topic")
+    private List<Post> posts;
 }
