@@ -2,6 +2,7 @@ package com.openclassrooms.mddapi.mapper;
 
 import com.openclassrooms.mddapi.dto.TopicDto;
 import com.openclassrooms.mddapi.dto.TopicDtoResponse;
+import com.openclassrooms.mddapi.dto.UserDtoResponse;
 import com.openclassrooms.mddapi.model.Topic;
 import com.openclassrooms.mddapi.model.User;
 import org.springframework.stereotype.Service;
@@ -25,11 +26,9 @@ public class TopicMapper {
         return topic;
     }
 
-
     public TopicDtoResponse toTopicDto(Topic topic) {
-        // Assuming you want to map multiple users into a single DTO, which means you'd need a collection of users for the response.
-        List<TopicDtoResponse.UserDtoResponse> userResponses = topic.getUser().stream()
-                .map(user -> new TopicDtoResponse.UserDtoResponse(
+        List<UserDtoResponse> userResponses = topic.getUser().stream()
+                .map(user -> new UserDtoResponse(
                         user.getId(),
                         user.getUsername(),
                         user.getEmail()
@@ -40,7 +39,8 @@ public class TopicMapper {
                 topic.getName(),
                 topic.getDescription(),
                 topic.getSubscription(),
-                userResponses // Adding the list of user responses to the DTO response
+                userResponses  // Adding the list of user responses to the DTO response
         );
     }
+
 }

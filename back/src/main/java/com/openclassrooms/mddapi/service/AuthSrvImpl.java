@@ -4,6 +4,7 @@ import com.openclassrooms.mddapi.config.TokenType;
 import com.openclassrooms.mddapi.dto.LoginDtoRequest;
 import com.openclassrooms.mddapi.dto.RegisterDtoRequest;
 import com.openclassrooms.mddapi.dto.AuthDtoResponse;
+import com.openclassrooms.mddapi.dto.UserDtoResponse;
 import com.openclassrooms.mddapi.model.Token;
 import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.repository.UserRepository;
@@ -13,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -75,6 +77,21 @@ public class AuthSrvImpl implements AuthService {
         return Optional.of(AuthDtoResponse.builder()
                 .token(jwtToken)
                 .build());
+    }
+
+    public void logout() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        revokeAllUserTokens(user);
+    }
+
+    public Optional<UserDtoResponse> authenticate() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return Optional.of(new UserDtoResponse(
+                user.getId(),
+                user.getUsername(),
+                user.getEmail()
+        ));
+
     }
     private void revokeAllUserTokens(User user) {
         var validUserTokens = tokenRepository.findAllValidTokenByUser(Math.toIntExact(user.getId()));
