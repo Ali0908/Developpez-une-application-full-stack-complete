@@ -27,7 +27,12 @@ public class User implements UserDetails {
     private String password;
     private String email;
 
-    @OneToMany(mappedBy = "user")
+    @ManyToMany
+    @JoinTable(
+            name = "user_topics",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "topic_id")
+    )
     private List<Topic> topics;
 
     @OneToMany(mappedBy = "user")

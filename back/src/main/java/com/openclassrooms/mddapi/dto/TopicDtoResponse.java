@@ -11,10 +11,18 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TopicDto {
+public class TopicDtoResponse {
     private Long id;
     private String name;
     private String description;
     private Boolean subscription;
-    private List users;
+    private List<UserDtoResponse> users;  // List of users subscribed to the topic
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class UserDtoResponse {
+        private Long userId;
+        private String username;
+        private String email;
+    }
 }

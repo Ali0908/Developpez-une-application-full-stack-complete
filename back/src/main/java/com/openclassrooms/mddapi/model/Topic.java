@@ -1,10 +1,11 @@
 package com.openclassrooms.mddapi.model;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -19,8 +20,6 @@ public class Topic {
     private String description;
     private Boolean subscription;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    @JsonBackReference
-    public User user;
+    @ManyToMany(mappedBy = "topics")
+    public List<User> user;
 }

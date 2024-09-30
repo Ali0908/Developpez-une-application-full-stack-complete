@@ -1,9 +1,9 @@
 package com.openclassrooms.mddapi.service;
 
 import com.openclassrooms.mddapi.config.TokenType;
-import com.openclassrooms.mddapi.dto.LoginRequest;
-import com.openclassrooms.mddapi.dto.RegisterRequest;
-import com.openclassrooms.mddapi.dto.AuthResponse;
+import com.openclassrooms.mddapi.dto.LoginDtoRequest;
+import com.openclassrooms.mddapi.dto.RegisterDtoRequest;
+import com.openclassrooms.mddapi.dto.AuthDtoResponse;
 import com.openclassrooms.mddapi.model.Token;
 import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.repository.UserRepository;
@@ -29,7 +29,7 @@ public class AuthSrvImpl implements AuthService {
     private final AuthenticationManager authenticationManager;
 
 
-    public Optional<AuthResponse> register(RegisterRequest request) {
+    public Optional<AuthDtoResponse> register(RegisterDtoRequest request) {
         var user = User.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())
@@ -38,7 +38,7 @@ public class AuthSrvImpl implements AuthService {
         var savedUser = userRepository.save(user);
         var jwtToken = jwtSrvImpl.generateToken(user);
         saveUserToken(savedUser, jwtToken);
-        return Optional.of(AuthResponse.builder()
+        return Optional.of(AuthDtoResponse.builder()
                 .token(jwtToken)
                 .build());
     }
@@ -52,7 +52,7 @@ public class AuthSrvImpl implements AuthService {
                 .build();
         tokenRepository.save(token);
     }
-    public Optional<AuthResponse> login(LoginRequest request) {
+    public Optional<AuthDtoResponse> login(LoginDtoRequest request) {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -72,7 +72,7 @@ public class AuthSrvImpl implements AuthService {
         var jwtToken = jwtSrvImpl.generateToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
-        return Optional.of(AuthResponse.builder()
+        return Optional.of(AuthDtoResponse.builder()
                 .token(jwtToken)
                 .build());
     }

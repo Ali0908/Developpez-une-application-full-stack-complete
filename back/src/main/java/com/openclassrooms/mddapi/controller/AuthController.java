@@ -1,6 +1,6 @@
 package com.openclassrooms.mddapi.controller;
 
-import com.openclassrooms.mddapi.dto.AuthResponse;
+import com.openclassrooms.mddapi.dto.AuthDtoResponse;
 import com.openclassrooms.mddapi.exceptions.BadRequestException;
 import com.openclassrooms.mddapi.exceptions.UnauthorizedRequestException;
 import com.openclassrooms.mddapi.service.interfaces.AuthService;
@@ -9,8 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import com.openclassrooms.mddapi.dto.RegisterRequest;
-import com.openclassrooms.mddapi.dto.LoginRequest;
+import com.openclassrooms.mddapi.dto.RegisterDtoRequest;
+import com.openclassrooms.mddapi.dto.LoginDtoRequest;
 import org.springframework.validation.ObjectError;
 
 
@@ -25,7 +25,7 @@ public class AuthController {
     private final AuthService authSrv;
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public Optional<AuthResponse> register(@RequestBody @Validated RegisterRequest request, BindingResult result) {
+    public Optional<AuthDtoResponse> register(@RequestBody @Validated RegisterDtoRequest request, BindingResult result) {
         if (result.hasErrors()) {
             String errorMessage = result.getAllErrors().stream()
                     .map(ObjectError::getDefaultMessage)
@@ -37,8 +37,8 @@ public class AuthController {
 
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.CREATED)
-    public Optional<AuthResponse> login(
-            @RequestBody @Validated LoginRequest loginRequest, BindingResult result
+    public Optional<AuthDtoResponse> login(
+            @RequestBody @Validated LoginDtoRequest loginRequest, BindingResult result
     ) {
         if (result.hasErrors()) {
             String errorMessage = result.getAllErrors().stream()

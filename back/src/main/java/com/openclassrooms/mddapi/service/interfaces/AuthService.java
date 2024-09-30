@@ -1,8 +1,8 @@
 package com.openclassrooms.mddapi.service.interfaces;
 
-import com.openclassrooms.mddapi.dto.RegisterRequest;
-import com.openclassrooms.mddapi.dto.LoginRequest;
-import com.openclassrooms.mddapi.dto.AuthResponse;
+import com.openclassrooms.mddapi.dto.RegisterDtoRequest;
+import com.openclassrooms.mddapi.dto.LoginDtoRequest;
+import com.openclassrooms.mddapi.dto.AuthDtoResponse;
 
 import java.util.Optional;
 
@@ -10,16 +10,16 @@ public interface AuthService {
     /**
      * Register a new user
      *
-     * @param request {@link RegisterRequest}
-     * @return {@link AuthResponse}
+     * @param request {@link RegisterDtoRequest}
+     * @return {@link AuthDtoResponse}
      */
-    Optional<AuthResponse> register(RegisterRequest request);
+    Optional<AuthDtoResponse> register(RegisterDtoRequest request);
 
     /**
      * Log a user
      *
-     * @param request {@link LoginRequest}
-     * @return {@link AuthResponse}
+     * @param request {@link LoginDtoRequest}
+     * @return {@link AuthDtoResponse}
      */
-    Optional<AuthResponse> login(LoginRequest request);
+    Optional<AuthDtoResponse> login(LoginDtoRequest request);
 }

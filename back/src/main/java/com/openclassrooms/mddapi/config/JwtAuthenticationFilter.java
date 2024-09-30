@@ -32,7 +32,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private static final Logger logger = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
     private final List<String> WHITE_LIST_URL = List.of("/api/auth/register",
             "/api/auth/login",
-            "/api/topics");
+            "/api/topics/**");
     private final AntPathMatcher pathMatcher = new AntPathMatcher();
 
     @Override

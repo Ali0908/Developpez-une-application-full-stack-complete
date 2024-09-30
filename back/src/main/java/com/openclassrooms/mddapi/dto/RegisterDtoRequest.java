@@ -12,7 +12,7 @@ import jakarta.validation.constraints.NotBlank;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
+public class RegisterDtoRequest {
     @NotBlank(message = "Username is required")
     private String username;
     @Email(message = "Email should be valid")
