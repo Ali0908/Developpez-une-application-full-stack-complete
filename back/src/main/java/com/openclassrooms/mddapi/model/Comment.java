@@ -2,36 +2,34 @@ package com.openclassrooms.mddapi.model;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.*;
-
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-public class Post {
+public class Comment {
+
     @Id
     @GeneratedValue
     private Long id;
-    private String title;
     private String content;
     private Date date;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "topic_id")
+    @JoinColumn(name = "post_id")
     @JsonBackReference
-    public Topic topic;
+    public Post post;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
     @JsonBackReference
     public User user;
-
-    @OneToMany(mappedBy = "post")
-    private List<Comment> comments;
 }
