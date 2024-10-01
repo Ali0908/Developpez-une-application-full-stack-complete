@@ -1,14 +1,12 @@
 package com.openclassrooms.mddapi.controller;
 
-
+import com.openclassrooms.mddapi.dto.PostDto;
 import com.openclassrooms.mddapi.dto.PostDtoResponse;
 import com.openclassrooms.mddapi.service.interfaces.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,10 +22,10 @@ public class PostController {
         return ResponseEntity.ok(posts);
     }
 
-//    @GetMapping("/subscribe/{userId}")
-//    public ResponseEntity<List<TopicDtoResponse>> getAllTopicsSubscribedByUserId(@PathVariable Integer userId) {
-//        List<TopicDtoResponse> topics = topicService.getAllTopicsSubscribedByUserId(userId);
-//        return ResponseEntity.ok(topics);
-//    }
+    @PostMapping("/create")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<String> create(@RequestBody PostDto postDto) {
+        return postService.create(postDto);
+    }
 
 }

@@ -3,13 +3,19 @@ package com.openclassrooms.mddapi.mapper;
 import com.openclassrooms.mddapi.dto.PostDto;
 import com.openclassrooms.mddapi.dto.PostDtoResponse;
 import com.openclassrooms.mddapi.model.Post;
-import com.openclassrooms.mddapi.model.Topic;
-import com.openclassrooms.mddapi.model.User;
+import com.openclassrooms.mddapi.repository.TopicRepository;
+import com.openclassrooms.mddapi.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 
 public class PostMapper {
+    @Autowired
+    private TopicRepository topicRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     public Post toPost(PostDto postDto) {
         Post post = new Post();
@@ -17,10 +23,8 @@ public class PostMapper {
         post.setTitle(postDto.getTitle());
         post.setContent(postDto.getContent());
         post.setDate(postDto.getDate());
-        Topic topic = new Topic();
-        topic.setId(postDto.getTopicId());
-        User user = new User();
-        user.setId(postDto.getAuthorId());
+        post.setTopic(topicRepository.findById(postDto.getTopicId()).get());
+        post.setUser(userRepository.findById(postDto.getAuthorId()).get());
         return post;
     }
 

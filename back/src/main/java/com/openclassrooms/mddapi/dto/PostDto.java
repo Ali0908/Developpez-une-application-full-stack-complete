@@ -16,6 +16,6 @@ public class PostDto {
     private String title;
     private String content;
     private Date date;
-    private Long topicId;
-    private Long authorId;
+    private Integer topicId;
+    private Integer authorId;
 }

@@ -1,12 +1,15 @@
 package com.openclassrooms.mddapi.service;
 
+import com.openclassrooms.mddapi.dto.PostDto;
 import com.openclassrooms.mddapi.dto.PostDtoResponse;
 import com.openclassrooms.mddapi.mapper.PostMapper;
+import com.openclassrooms.mddapi.model.Post;
 import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.repository.PostRepository;
 import com.openclassrooms.mddapi.repository.UserRepository;
 import com.openclassrooms.mddapi.service.interfaces.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -39,5 +42,10 @@ public class PostSrvImpl implements PostService {
                 .collect(Collectors.toList());
     }
 
-
+    @Override
+    public ResponseEntity<String> create(PostDto postDto) {
+        Post post = postMapper.toPost(postDto);
+        postRepository.save(post);
+        return ResponseEntity.ok("Post created successfully");
+    }
 }
