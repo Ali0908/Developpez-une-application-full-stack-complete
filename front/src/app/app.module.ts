@@ -7,16 +7,18 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
-import { TopicComponent } from './pages/topic/topic/topic.component';
+import { TopicComponent } from './pages/topic/topic.component';
 import {MatCardModule} from "@angular/material/card";
-import {HttpClientModule} from "@angular/common/http";
-import { RegisterComponent } from './pages/register/register/register.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { RegisterComponent } from './pages/register/register.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
-import { LoginComponent } from './pages/login/login/login.component';
+import { LoginComponent } from './pages/login/login.component';
+import {JwtInterceptor} from "./interceptor/jwt.interceptor";
+import { AccountComponent } from './pages/account/account.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, TopicComponent, RegisterComponent, LoginComponent],
+  declarations: [AppComponent, HomeComponent, TopicComponent, RegisterComponent, LoginComponent, AccountComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,7 +31,9 @@ import { LoginComponent } from './pages/login/login/login.component';
     ReactiveFormsModule,
     MatInputModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

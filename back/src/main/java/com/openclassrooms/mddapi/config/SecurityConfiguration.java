@@ -35,9 +35,7 @@ public class SecurityConfiguration {
     private final UserRepository repository;
 
     public static final String[] WHITE_LIST_URL = {"/api/auth/login",
-            "/api/auth/register",
-            "/api/topics/**"
-    };
+            "/api/auth/register"};
 
 
     @Bean

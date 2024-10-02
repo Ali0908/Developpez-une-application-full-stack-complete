@@ -95,6 +95,7 @@ public class AuthSrvImpl implements AuthService {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         user.setUsername(userDto.getUsername());
         user.setEmail(userDto.getEmail());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         userRepository.save(user);
         return Optional.of(new UserDtoResponse(
                 user.getId(),
