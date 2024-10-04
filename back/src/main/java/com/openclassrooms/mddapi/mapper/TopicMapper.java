@@ -19,7 +19,6 @@ public class TopicMapper {
         topic.setId(topicDto.getId());
         topic.setName(topicDto.getName());
         topic.setDescription(topicDto.getDescription());
-        topic.setSubscription(topicDto.getSubscription());
         User user = new User();
         user.setTopics((List<Topic>) topicDto.getUsers());
         topic.setUser((List<User>) user);
@@ -38,7 +37,6 @@ public class TopicMapper {
                 topic.getId(),
                 topic.getName(),
                 topic.getDescription(),
-                topic.getSubscription(),
                 userResponses  // Adding the list of user responses to the DTO response
         );
     }

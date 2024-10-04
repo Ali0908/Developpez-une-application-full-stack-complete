@@ -2,6 +2,7 @@ package com.openclassrooms.mddapi.dto.response;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,9 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginDtoRequest {
-    @Email(message = "Email is not valid")
-    @NotBlank(message = "error")
-    private String email;
+
+    @NotEmpty(message = "error")
+    private String identifier;
     @NotBlank(message = "error")
     String password;
 }

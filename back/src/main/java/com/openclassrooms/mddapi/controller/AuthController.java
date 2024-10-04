@@ -44,12 +44,6 @@ public class AuthController {
     public Optional<AuthDtoResponse> login(
             @RequestBody @Validated LoginDtoRequest loginRequest, BindingResult result
     ) {
-        if (result.hasErrors()) {
-            String errorMessage = result.getAllErrors().stream()
-                    .map(ObjectError::getDefaultMessage)
-                    .collect(Collectors.joining(", "));
-            throw new UnauthorizedRequestException(errorMessage);
-        }
         return authSrv.login(loginRequest);
     }
 

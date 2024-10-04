@@ -18,6 +18,8 @@ import {JwtInterceptor} from "./interceptor/jwt.interceptor";
 import { AccountComponent } from './pages/account/account.component';
 import { PostComponent } from './pages/post/post.component';
 import { FeedComponent } from './pages/feed/feed.component';
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, TopicComponent, RegisterComponent, LoginComponent, AccountComponent, PostComponent, FeedComponent],
@@ -32,6 +34,8 @@ import { FeedComponent } from './pages/feed/feed.component';
     HttpClientModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

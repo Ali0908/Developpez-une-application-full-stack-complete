@@ -15,6 +15,5 @@ public class TopicDtoResponse {
     private Integer id;
     private String name;
     private String description;
-    private Boolean subscription;
     private List<UserDtoResponse> users;
 }

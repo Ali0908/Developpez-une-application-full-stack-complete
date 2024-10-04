@@ -6,6 +6,7 @@ import com.openclassrooms.mddapi.dto.request.UserDto;
 import com.openclassrooms.mddapi.dto.response.AuthDtoResponse;
 import com.openclassrooms.mddapi.dto.response.LoginDtoRequest;
 import com.openclassrooms.mddapi.dto.response.UserDtoResponse;
+import com.openclassrooms.mddapi.exceptions.UnauthorizedRequestException;
 import com.openclassrooms.mddapi.model.Token;
 import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.repository.UserRepository;
@@ -15,7 +16,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -56,29 +59,21 @@ public class AuthSrvImpl implements AuthService {
         tokenRepository.save(token);
     }
     public Optional<AuthDtoResponse> login(LoginDtoRequest request) {
-        try {
-            authenticationManager.authenticate(
+            Authentication authenticatedUser = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            request.getEmail(),
+                            request.getIdentifier(),  // This can be either email or username
                             request.getPassword()
-                    )
-            );
+                    ));
             System.out.println("Authentication successful");
-        } catch (BadCredentialsException e) {
-            System.out.println("Bad credentials: Invalid email or password");
-        } catch (Exception e) {
-            System.out.println("Authentication failed due to: " + e.getMessage());
-            throw e;
-        }
-        var user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        var jwtToken = jwtSrvImpl.generateToken(user);
-        revokeAllUserTokens(user);
-        saveUserToken(user, jwtToken);
-        return Optional.of(AuthDtoResponse.builder()
-                .token(jwtToken)
-                .build());
+            User user = (User) authenticatedUser.getPrincipal();
+            var jwtToken = jwtSrvImpl.generateToken(user);
+            revokeAllUserTokens(user);
+            saveUserToken(user, jwtToken);
+            return Optional.of(AuthDtoResponse.builder()
+                    .token(jwtToken)
+                    .build());
     }
+
 
     public void logout() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

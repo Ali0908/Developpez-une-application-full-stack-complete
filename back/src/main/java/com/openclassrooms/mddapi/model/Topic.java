@@ -18,8 +18,6 @@ public class Topic {
     private Integer id;
     private String name;
     private String description;
-    private Boolean subscription;
-
     @ManyToMany(mappedBy = "topics")
     public List<User> user;
 

@@ -60,7 +60,7 @@ public class SecurityConfiguration {
     }
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> repository.findByEmail(username)
+        return identifier -> repository.findByEmailOrUsername(identifier, identifier)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
     @Bean
