@@ -1,19 +1,19 @@
-package com.openclassrooms.mddapi.dto;
+package com.openclassrooms.mddapi.dto.request;
 
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.validation.constraints.NotBlank;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class SubscribeToTopicDto {
-    @NotBlank(message = "Topic is required")
+    @NotNull(message = "Topic ID is required")
     private Integer topicId;
-    @NotBlank(message = "Token is required")
+    @NotNull(message = "Token is required")
     private Integer userId;
 }

@@ -1,8 +1,8 @@
 package com.openclassrooms.mddapi.mapper;
 
-import com.openclassrooms.mddapi.dto.TopicDto;
-import com.openclassrooms.mddapi.dto.TopicDtoResponse;
-import com.openclassrooms.mddapi.dto.UserDtoResponse;
+import com.openclassrooms.mddapi.dto.request.TopicDto;
+import com.openclassrooms.mddapi.dto.response.TopicDtoResponse;
+import com.openclassrooms.mddapi.dto.response.UserDtoResponse;
 import com.openclassrooms.mddapi.model.Topic;
 import com.openclassrooms.mddapi.model.User;
 import org.springframework.stereotype.Service;

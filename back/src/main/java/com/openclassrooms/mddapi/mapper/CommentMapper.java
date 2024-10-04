@@ -1,7 +1,7 @@
 package com.openclassrooms.mddapi.mapper;
 
-import com.openclassrooms.mddapi.dto.CommentDto;
-import com.openclassrooms.mddapi.dto.CommentDtoResponse;
+import com.openclassrooms.mddapi.dto.request.CommentDto;
+import com.openclassrooms.mddapi.dto.response.CommentDtoResponse;
 import com.openclassrooms.mddapi.model.Comment;
 import com.openclassrooms.mddapi.repository.PostRepository;
 import com.openclassrooms.mddapi.repository.UserRepository;

@@ -1,7 +1,7 @@
 package com.openclassrooms.mddapi.mapper;
 
-import com.openclassrooms.mddapi.dto.PostDto;
-import com.openclassrooms.mddapi.dto.PostDtoResponse;
+import com.openclassrooms.mddapi.dto.request.PostDto;
+import com.openclassrooms.mddapi.dto.response.PostDtoResponse;
 import com.openclassrooms.mddapi.model.Post;
 import com.openclassrooms.mddapi.repository.TopicRepository;
 import com.openclassrooms.mddapi.repository.UserRepository;
@@ -35,6 +35,8 @@ public class PostMapper {
                 post.getDate(),
                 post.getTopic().getId(),
                 post.getTopic().getName(),
-                post.getUser().getId());
+                post.getUser().getId(),
+                post.getUser().getUsername()
+        );
     }
 }

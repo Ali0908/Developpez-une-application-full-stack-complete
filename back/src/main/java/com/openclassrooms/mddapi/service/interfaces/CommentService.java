@@ -1,7 +1,7 @@
 package com.openclassrooms.mddapi.service.interfaces;
 
-import com.openclassrooms.mddapi.dto.CommentDto;
-import com.openclassrooms.mddapi.dto.CommentDtoResponse;
+import com.openclassrooms.mddapi.dto.request.CommentDto;
+import com.openclassrooms.mddapi.dto.response.CommentDtoResponse;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;

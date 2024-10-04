@@ -16,9 +16,11 @@ import {MatInputModule} from "@angular/material/input";
 import { LoginComponent } from './pages/login/login.component';
 import {JwtInterceptor} from "./interceptor/jwt.interceptor";
 import { AccountComponent } from './pages/account/account.component';
+import { PostComponent } from './pages/post/post.component';
+import { FeedComponent } from './pages/feed/feed.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, TopicComponent, RegisterComponent, LoginComponent, AccountComponent],
+  declarations: [AppComponent, HomeComponent, TopicComponent, RegisterComponent, LoginComponent, AccountComponent, PostComponent, FeedComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

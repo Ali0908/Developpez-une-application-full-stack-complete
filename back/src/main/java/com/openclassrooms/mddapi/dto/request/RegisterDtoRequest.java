@@ -1,4 +1,4 @@
-package com.openclassrooms.mddapi.dto;
+package com.openclassrooms.mddapi.dto.request;
 
 import com.openclassrooms.mddapi.validation.ValidPassword;
 import jakarta.validation.constraints.Email;

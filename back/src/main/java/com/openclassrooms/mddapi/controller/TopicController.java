@@ -1,7 +1,7 @@
 package com.openclassrooms.mddapi.controller;
 
-import com.openclassrooms.mddapi.dto.SubscribeToTopicDto;
-import com.openclassrooms.mddapi.dto.TopicDtoResponse;
+import com.openclassrooms.mddapi.dto.request.SubscribeToTopicDto;
+import com.openclassrooms.mddapi.dto.response.TopicDtoResponse;
 import com.openclassrooms.mddapi.service.interfaces.TopicService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

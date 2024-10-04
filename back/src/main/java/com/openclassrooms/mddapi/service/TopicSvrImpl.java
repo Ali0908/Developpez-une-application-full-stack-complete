@@ -1,7 +1,7 @@
 package com.openclassrooms.mddapi.service;
 
-import com.openclassrooms.mddapi.dto.SubscribeToTopicDto;
-import com.openclassrooms.mddapi.dto.TopicDtoResponse;
+import com.openclassrooms.mddapi.dto.request.SubscribeToTopicDto;
+import com.openclassrooms.mddapi.dto.response.TopicDtoResponse;
 import com.openclassrooms.mddapi.mapper.TopicMapper;
 import com.openclassrooms.mddapi.model.Topic;
 import com.openclassrooms.mddapi.model.User;

@@ -1,4 +1,4 @@
-package com.openclassrooms.mddapi.dto;
+package com.openclassrooms.mddapi.dto.response;
 
 
 import lombok.AllArgsConstructor;
@@ -13,11 +13,12 @@ import java.util.Date;
 @NoArgsConstructor
 public class PostDtoResponse {
 
-    private Long id;
+    private Integer id;
     private String title;
     private String content;
     private Date date;
-    private Long topicId;
+    private Integer topicId;
     private String topicTitle;
-    private Long authorId;
+    private Integer authorId;
+    private String authorUsername;
 }

@@ -15,7 +15,7 @@ import java.util.List;
 public class Topic {
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
     private String name;
     private String description;
     private Boolean subscription;

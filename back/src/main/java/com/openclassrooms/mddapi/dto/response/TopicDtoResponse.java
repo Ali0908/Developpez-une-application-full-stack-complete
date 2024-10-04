@@ -1,4 +1,4 @@
-package com.openclassrooms.mddapi.dto;
+package com.openclassrooms.mddapi.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,10 +11,10 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TopicDto {
-    private Long id;
+public class TopicDtoResponse {
+    private Integer id;
     private String name;
     private String description;
     private Boolean subscription;
-    private List users;
+    private List<UserDtoResponse> users;
 }

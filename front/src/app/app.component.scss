@@ -13,3 +13,9 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 }
+.card-container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}

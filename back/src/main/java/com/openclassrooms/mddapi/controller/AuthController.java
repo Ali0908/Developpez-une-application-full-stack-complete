@@ -1,6 +1,10 @@
 package com.openclassrooms.mddapi.controller;
 
-import com.openclassrooms.mddapi.dto.*;
+import com.openclassrooms.mddapi.dto.request.RegisterDtoRequest;
+import com.openclassrooms.mddapi.dto.request.UserDto;
+import com.openclassrooms.mddapi.dto.response.AuthDtoResponse;
+import com.openclassrooms.mddapi.dto.response.LoginDtoRequest;
+import com.openclassrooms.mddapi.dto.response.UserDtoResponse;
 import com.openclassrooms.mddapi.exceptions.BadRequestException;
 import com.openclassrooms.mddapi.exceptions.UnauthorizedRequestException;
 import com.openclassrooms.mddapi.service.interfaces.AuthService;

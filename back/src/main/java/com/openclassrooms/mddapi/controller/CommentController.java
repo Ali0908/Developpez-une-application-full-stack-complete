@@ -1,7 +1,7 @@
 package com.openclassrooms.mddapi.controller;
 
-import com.openclassrooms.mddapi.dto.CommentDto;
-import com.openclassrooms.mddapi.dto.CommentDtoResponse;
+import com.openclassrooms.mddapi.dto.request.CommentDto;
+import com.openclassrooms.mddapi.dto.response.CommentDtoResponse;
 import com.openclassrooms.mddapi.service.interfaces.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

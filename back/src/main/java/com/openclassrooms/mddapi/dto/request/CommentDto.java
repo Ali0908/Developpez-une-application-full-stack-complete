@@ -1,4 +1,4 @@
-package com.openclassrooms.mddapi.dto;
+package com.openclassrooms.mddapi.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,9 +11,10 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommentDtoResponse {
+public class CommentDto {
+    private Integer id;
     private String content;
     private Date date;
-    private Long postId;
-    private Long authorId;
+    private Integer postId;
+    private Integer authorId;
 }

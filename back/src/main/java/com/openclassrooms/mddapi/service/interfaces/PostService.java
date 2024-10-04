@@ -1,6 +1,6 @@
 package com.openclassrooms.mddapi.service.interfaces;
-import com.openclassrooms.mddapi.dto.PostDto;
-import com.openclassrooms.mddapi.dto.PostDtoResponse;
+import com.openclassrooms.mddapi.dto.request.PostDto;
+import com.openclassrooms.mddapi.dto.response.PostDtoResponse;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
