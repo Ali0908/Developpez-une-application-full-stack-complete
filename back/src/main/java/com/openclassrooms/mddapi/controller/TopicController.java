@@ -4,6 +4,7 @@ import com.openclassrooms.mddapi.dto.request.SubscribeToTopicDto;
 import com.openclassrooms.mddapi.dto.response.TopicDtoResponse;
 import com.openclassrooms.mddapi.service.interfaces.TopicService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,10 +22,12 @@ public class TopicController {
     }
 
     @PostMapping("/subscribe")
-    public ResponseEntity<Void> subscribeToTopic(@RequestBody SubscribeToTopicDto dto) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<String> subscribeToTopic(@RequestBody SubscribeToTopicDto dto) {
         topicService.subscribeToTopic(dto);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).body("Abonnement réussi");
     }
+
 
     @DeleteMapping("/unsubscribe")
     public ResponseEntity<Void> unsubscribeToTopic(@RequestBody SubscribeToTopicDto dto) {
