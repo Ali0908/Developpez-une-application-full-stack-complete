@@ -25,7 +25,8 @@ public class PostController {
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<String> create(@RequestBody PostDto postDto) {
-        return postService.create(postDto);
+         postService.create(postDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Post créé");
     }
 
 }
