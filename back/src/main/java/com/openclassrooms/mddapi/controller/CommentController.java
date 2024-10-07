@@ -21,12 +21,13 @@ public class CommentController {
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<String> create(@RequestBody CommentDto commentDto) {
-        return commentService.create(commentDto);
+        commentService.create(commentDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Commentaire créé");
     }
 
     @GetMapping("/{articleId}")
     public ResponseEntity<List<CommentDtoResponse>> getCommentsByArticleId(@PathVariable("articleId") Integer articleId) {
-        List<CommentDtoResponse> comments = (List<CommentDtoResponse>) commentService.getCommentsByArticleId(articleId);
+        List<CommentDtoResponse> comments = commentService.getCommentsByArticleId(articleId);
         return ResponseEntity.ok(comments);
     }
 }

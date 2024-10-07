@@ -20,9 +20,10 @@ import { PostComponent } from './pages/post/post.component';
 import { FeedComponent } from './pages/feed/feed.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import { DetailPostComponent } from './pages/detail-post/detail-post.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, TopicComponent, RegisterComponent, LoginComponent, AccountComponent, PostComponent, FeedComponent],
+  declarations: [AppComponent, HomeComponent, TopicComponent, RegisterComponent, LoginComponent, AccountComponent, PostComponent, FeedComponent, DetailPostComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

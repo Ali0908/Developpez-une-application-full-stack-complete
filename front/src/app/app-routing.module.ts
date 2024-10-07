@@ -8,6 +8,7 @@ import {authGuard} from "./guard/auth.guard";
 import {AccountComponent} from "./pages/account/account.component";
 import {FeedComponent} from "./pages/feed/feed.component";
 import {PostComponent} from "./pages/post/post.component";
+import {DetailPostComponent} from "./pages/detail-post/detail-post.component";
 
 // consider a guard combined with canLoad / canActivate route option
 // to manage unauthenticated user to access private routes
@@ -30,7 +31,12 @@ const routes: Routes = [
   path: 'post',
   component: PostComponent,
   canActivate: [authGuard]
-}
+},
+  {
+    path: 'detail-post/:id',
+    component: DetailPostComponent,
+    canActivate: [authGuard]
+  }
 ];
 
 @NgModule({

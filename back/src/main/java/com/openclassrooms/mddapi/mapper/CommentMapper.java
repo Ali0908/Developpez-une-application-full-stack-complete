@@ -30,7 +30,8 @@ public class CommentMapper {
         return new CommentDtoResponse(
                 comment.getContent(),
                 comment.getDate(),
+                comment.getPost().getId(),
                 comment.getUser().getId(),
-                comment.getPost().getId());
+                comment.getUser().getUsername());
     }
 }

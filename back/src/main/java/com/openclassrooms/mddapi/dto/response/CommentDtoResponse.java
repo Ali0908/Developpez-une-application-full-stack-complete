@@ -16,4 +16,5 @@ public class CommentDtoResponse {
     private Date date;
     private Integer postId;
     private Integer authorId;
+    private String authorUsername;
 }
