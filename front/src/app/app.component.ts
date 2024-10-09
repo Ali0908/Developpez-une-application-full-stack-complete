@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {SharedService} from "./shared/shared.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'front';
+  userConnected = false;
+  constructor( private  sharedSrv: SharedService) {
+    this.sharedSrv.userConnected$.subscribe({
+      next: (userConnected: boolean) => {
+        this.userConnected = userConnected;
+      },
+      error: () => this.userConnected = false
+    });
+  }
 }
