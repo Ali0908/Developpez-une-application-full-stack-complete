@@ -9,12 +9,19 @@ import {SharedService} from "./shared/shared.service";
 export class AppComponent {
   title = 'front';
   userConnected = false;
+  showButtons = false;
   constructor( private  sharedSrv: SharedService) {
     this.sharedSrv.userConnected$.subscribe({
       next: (userConnected: boolean) => {
         this.userConnected = userConnected;
       },
       error: () => this.userConnected = false
+    });
+    this.sharedSrv.showButtons$.subscribe({
+      next: (showButtons: boolean) => {
+        this.showButtons = showButtons;
+      },
+      error: () => this.showButtons = false
     });
   }
 }

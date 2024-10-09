@@ -1,8 +1,8 @@
 <section class="header" *ngIf="userConnected">
-  <a routerLink='' target="_blank">
+  <a routerLink=''>
     <img src="/assets/logo_p6.png" alt="logo" class="image"/>
   </a>
-  <div class="example-button-row">
+  <div class="example-button-row" *ngIf="showButtons">
     <a mat-button routerLink="feed">Articles</a>
     <a mat-button routerLink="topics">Thèmes</a>
     <a mat-button routerLink="account">
