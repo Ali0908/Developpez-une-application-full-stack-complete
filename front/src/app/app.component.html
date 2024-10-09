@@ -1,3 +1,4 @@
+<ng-container *ngIf="!hideHeader">
 <section class="header" *ngIf="userConnected">
   <a routerLink=''>
     <img src="/assets/logo_p6.png" alt="logo" class="image"/>
@@ -10,4 +11,5 @@
     </a>
   </div>
 </section>
+</ng-container>
 <router-outlet></router-outlet>
