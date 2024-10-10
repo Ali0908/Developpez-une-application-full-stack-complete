@@ -2,3 +2,12 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Media query pour les écrans de taille <= 500px */
+@media (max-width: 500px) {
+  .logo {
+    display: block;
+    width: 100px; /* Ajuste la taille selon tes besoins */
+    margin: 0 auto;
+  }
+}
