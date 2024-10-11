@@ -21,23 +21,27 @@ import { FeedComponent } from './pages/feed/feed.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import { DetailPostComponent } from './pages/detail-post/detail-post.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, TopicComponent, RegisterComponent, LoginComponent, AccountComponent, PostComponent, FeedComponent, DetailPostComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatIconModule,
-    MatCardModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatOptionModule,
-    MatSelectModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatIconModule,
+        MatCardModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatOptionModule,
+        MatSelectModule,
+        MatToolbarModule,
+        MatExpansionModule,
+    ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],

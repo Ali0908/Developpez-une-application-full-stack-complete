@@ -1,0 +1,25 @@
+<div>
+  <form class="post" [formGroup]="form" (ngSubmit)="submit()">
+    <a routerLink='/feed' target="_blank">
+      <mat-icon aria-hidden="false" aria-label="Arrow Back" fontIcon="arrow_back"></mat-icon>
+    </a>
+    <h2>Créer un nouvel article</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>Sélectionner un thème</mat-label>
+      <mat-select formControlName="topic">
+        <mat-option *ngFor="let topic of topics$ |async" [value]="topic.id">{{topic.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Titre de l'article</mat-label>
+      <input matInput formControlName="postTitle" required>
+      <mat-error *ngIf="form.get('postTitle')?.hasError('required')">Merci un titre pour votre article</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Contenu de l'article</mat-label>
+      <textarea matInput formControlName="postContent" required></textarea>
+      <mat-error *ngIf="form.get('postContent')?.hasError('required')">Merci de saisir un contenu pour votre article</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Créer</button>
+  </form>
+</div>

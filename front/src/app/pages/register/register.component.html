@@ -1,0 +1,35 @@
+<a routerLink=''>
+  <mat-icon aria-hidden="false" aria-label="Arrow Back" fontIcon="arrow_back"  class="arrow"></mat-icon>
+</a>
+<img src="/assets/logo_p6.png" alt="logo" class="logo" *ngIf="showLogo" />
+<div class="register">
+  <mat-card>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <mat-card-content>
+         <mat-card-header class="title">
+              <mat-card-title>Inscription</mat-card-title>
+            </mat-card-header>
+        <h3>Nom d'utilisateur</h3>
+        <mat-form-field appearance="outline">
+              <input matInput formControlName="username" required>
+              <mat-error *ngIf="form.get('username')?.hasError('required')">Saisissez un nom d'utilisateur</mat-error>
+            </mat-form-field>
+        <h3>Adresse e-mail</h3>
+        <mat-form-field appearance="outline">
+              <input matInput formControlName="email" required>
+              <mat-error *ngIf="form.get('email')?.hasError('required')">Merci de saisir une adresse mail</mat-error>
+              <mat-error *ngIf="form.get('email')?.hasError('email')">Merci de saisir une adresse mail au format: patrice@example.com </mat-error>
+            </mat-form-field>
+        <h3>Mot de passe</h3>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="password" required>
+              <mat-error *ngIf="form.get('password')?.hasError('required')">Merci de saisir un mot de passe</mat-error>
+              <mat-error class="error" *ngIf="form.get('password')?.hasError('minlength') || form.get('password')?.hasError('pattern')">
+                Merci de saisir un mot de passe contenant au moins 8 caractères, une majuscule, une minuscule et un caractère spécial
+              </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit" class="submit-container"  [disabled]="form.invalid">Submit</button>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>

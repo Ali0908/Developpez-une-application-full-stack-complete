@@ -8,6 +8,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .logo {
     display: block;
     width: 100px; /* Ajuste la taille selon tes besoins */
-    margin: 0 auto;
+    margin-bottom: 10%;
   }
+}
+
+.card-container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
 }

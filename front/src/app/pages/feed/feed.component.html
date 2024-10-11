@@ -1,0 +1,21 @@
+  <div>
+    <mat-card-actions class="feed-btn">
+      <a mat-raised-button color="primary" (click)="navigateToCreatePost()">Créer un article</a>
+      <button mat-button (click)="toggleSort()">Trier
+      <mat-icon *ngIf="arrowDownward">arrow_downward</mat-icon>
+      <mat-icon *ngIf="arrowUpward">arrow_upward</mat-icon>
+      </button>
+    </mat-card-actions>
+  <div class="card-container">
+    <mat-card *ngFor=" let post of feed$ | async"  (click)="navigateToDetailPost(post)" class="card">
+      <mat-card-title>{{post.title}}</mat-card-title>
+      <mat-card-content>
+          <div class="row">
+            <p>{{post.date | date: 'dd-MM-yyyy' }}</p>
+            <p>{{post.authorUsername}}</p>
+          </div>
+          <p>{{post.content}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<a routerLink=''>
+  <mat-icon aria-hidden="false" aria-label="Arrow Back" fontIcon="arrow_back" class="arrow"></mat-icon>
+</a>
+<img src="/assets/logo_p6.png" alt="logo" class="logo" *ngIf="showLogo" />
+<div class="login">
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>Se connecter</mat-card-title>
+    </mat-card-header>
+    <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
+      <mat-card-content>
+        <h3>Email ou Nom d'utilisateur</h3>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="identifier">
+          <mat-error *ngIf="form.get('identifier')?.hasError('identifier')">Merci de saisir un email ou un nom d'utilisateur</mat-error>
+        </mat-form-field>
+        <h3>Password</h3>
+        <mat-form-field appearance="outline">
+          <input matInput [type]="hide ? 'password' : 'text'"
+                 formControlName="password">
+          <mat-error *ngIf="form.get('password')?.hasError('required')">Merci de saisir un mot de passe</mat-error>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+          <p *ngIf="onError" class="error">Email/Mot de passe non enregistré</p>
+        </mat-card-actions>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>

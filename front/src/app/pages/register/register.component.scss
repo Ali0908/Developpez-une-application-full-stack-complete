@@ -1,0 +1,22 @@
+.register {
+  display: flex;
+  justify-content: center;
+}
+.error{
+  color: red;
+  font-size: 0.8em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+.title {
+  text-align: center; /* Centre le texte du titre */
+}
+
+.submit-container {
+  display: flex;
+  justify-content: center; /* Centre le bouton horizontalement */
+  margin-top: 16px;
+  text-align: center/* Ajoute de l'espace au-dessus du bouton */
+}
+

@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #f8f9fa;
+    background-color: #ffffff;
 
   .image{
     width: 10%;
@@ -13,9 +13,29 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 }
-.card-container{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
+.right-btn{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  transform: rotate(90deg);
+}
+
+.left-btn {
+  display: flex;
+  justify-content: flex-end;
+  transform: rotate(90deg);
+}
+.header-btn{
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-accordion {
+  display: block;
+  transform-origin: right;
+  transform: rotate(-90deg) translateX(-600px); /* rotate and position it; translateX value corresponds to panel height */
+}
+.menu-button {
+  display: flex;
+  justify-content: flex-end;
 }

@@ -1,0 +1,26 @@
+.error{
+    color: red;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+.login{
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+  border:none;
+  padding: 0; /* Enlevez tout padding potentiel */
+  box-shadow: none; /* Supprimez aussi toute ombre */
+}
+
+.form-card{
+  border: none;
+}
+
+
+
+mat-card-actions {
+  display: flex;
+  justify-content: center; /* Centre le bouton dans les actions */
+}
