@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {Topic} from "../models/topic";
+import {Topic} from "../../../core/models/topic";
 import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../environments/environment.prod";
-import {SubscriptionTopic} from "../models/subscription-topic";
+import {environment} from "../../../../environments/environment.prod";
+import {SubscriptionTopic} from "../../../core/models/subscription-topic";
 @Injectable({
   providedIn: 'root'
 })

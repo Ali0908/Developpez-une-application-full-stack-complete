@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../../environments/environment.prod";
+import {environment} from "../../../../environments/environment.prod";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Feed} from "../models/feed";
-import {Post} from "../models/post";
+import {Feed} from "../../../core/models/feed";
+import {Post} from "../../../core/models/post";
 
 
 @Injectable({

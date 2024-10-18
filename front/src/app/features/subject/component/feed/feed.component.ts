@@ -2,9 +2,10 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {SharedService} from "../../../../shared/shared.service";
 import {Feed} from "../../../../core/models/feed";
 import {Observable} from "rxjs";
-import {PostService} from "../../../../core/services/post.service";
+import {PostService} from "../../service/post.service";
 import {Router} from "@angular/router";
 import {map} from "rxjs/operators";
+import {SessionService} from "../../../../shared/session.service";
 
 @Component({
   selector: 'app-feed',
@@ -20,20 +21,15 @@ export class FeedComponent implements OnInit {
   constructor( private sharedSrv: SharedService,
                private postSrv: PostService,
                private router: Router,
-               private cd: ChangeDetectorRef) {
+               private cd: ChangeDetectorRef,
+               private sessionService: SessionService) {
     this.sharedSrv.setUserConnected(true);
     this.sharedSrv.setShowButtons(true);
   }
 
   ngOnInit(): void {
-    this.sharedSrv.loadUser().subscribe({
-      next: (data: { userId: number, username: string, email: string }) => {
-        this.userId = data.userId;
-        console.log(data);
-        this.feed$ = this.postSrv.getFeed(this.userId);
-        this.cd.detectChanges();
-      }
-    });
+    this.userId = this.sessionService?.sessionInformation?.userId as number;
+    this.feed$ = this.postSrv.getFeed(this.userId);
   }
 
   navigateToCreatePost() {

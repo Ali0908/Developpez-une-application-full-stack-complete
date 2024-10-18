@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
 import {Topic} from "../../../../core/models/topic";
-import {TopicService} from "../../../../core/services/topic.service";
+import {TopicService} from "../../service/topic.service";
 import {SharedService} from "../../../../shared/shared.service";
 import {SubscriptionTopic} from "../../../../core/models/subscription-topic";
+import {SessionService} from "../../../../shared/session.service";
 
 @Component({
   selector: 'app-topic',
@@ -14,17 +15,16 @@ export class TopicComponent implements OnInit {
   public topics$: Observable<Topic[]> = this.topicSrv.getAll();
   userId!: number;
   constructor( private topicSrv: TopicService,
-               private sharedSrv: SharedService) {
-    this.sharedSrv.loadUser().subscribe({
-      next: (data: { userId: number, username: string, email: string }) => {
-        this.userId = data.userId;
-      }
-    });
+               private sharedSrv: SharedService,
+               private sessionService: SessionService) {
     this.sharedSrv.setUserConnected(true);
     this.sharedSrv.setShowButtons(true);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userId = this.sessionService?.sessionInformation?.userId as number;
+
+  }
 
   subscribe(topicId: number): void {
     const subscribeObject: SubscriptionTopic = {

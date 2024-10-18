@@ -12,7 +12,6 @@ export class SharedService {
   private storeUserConnected!: any;
   private storeShowButtons!: any;
   private storeHideHeader!: any;
-  private authenticatedUser$!: Observable<User>;
   private userConnectedSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private showButtonsSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private hideHeaderSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false); // Initialize here
@@ -20,19 +19,7 @@ export class SharedService {
   userConnected$: Observable<boolean> = this.userConnectedSubject.asObservable();
   showButtons$: Observable<boolean>= this.showButtonsSubject.asObservable();
   hideHeader$: Observable<boolean>= this.hideHeaderSubject.asObservable();
-  constructor( private authSrv: AuthService) {
-    this.authenticatedUser$ = this.authSrv.me();
-  }
-
-
-  loadUser(): Observable<{ userId: number, username: string, email: string }> {
-    return this.authenticatedUser$.pipe(
-      map((user: User) => ({
-        userId: user.userId,
-        username: user.username,
-        email: user.email,
-      }))
-    );
+   constructor( private authSrv: AuthService) {
   }
 
   setUserConnected(userConnected: boolean): void {

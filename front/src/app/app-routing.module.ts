@@ -4,7 +4,7 @@ import {TopicComponent} from "./features/subject/component/topic/topic.component
 import {RegisterComponent} from "./features/auth/components/register/register.component";
 import {LoginComponent} from "./features/auth/components/login/login.component";
 import {authGuard} from "./guard/auth.guard";
-import {AccountComponent} from "./pages/account/account.component";
+import {AccountComponent} from "./features/account/account.component";
 import {FeedComponent} from "./features/subject/component/feed/feed.component";
 import {PostComponent} from "./features/subject/component/post/post.component";
 import {DetailPostComponent} from "./features/subject/component/detail-post/detail-post.component";

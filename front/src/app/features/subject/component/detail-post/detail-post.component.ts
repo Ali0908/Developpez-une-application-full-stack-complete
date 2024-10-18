@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {SharedService} from "../../../../shared/shared.service";
-import {CommentService} from "../../../../core/services/comment.service";
+import {CommentService} from "../../service/comment.service";
 import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {Comment} from "../../../../core/models/comment";
 import {FormBuilder, Validators} from "@angular/forms";
 import {CommentRequest} from "../../../../core/models/comment-request";
+import {SessionService} from "../../../../shared/session.service";
 
 @Component({
   selector: 'app-detail-post',
@@ -23,17 +24,14 @@ export class DetailPostComponent implements OnInit {
 
   constructor(private sharedSrv: SharedService,
               private commentSrv: CommentService,
-              private fb: FormBuilder) {
-    this.sharedSrv.loadUser().subscribe({
-      next: (data: { userId: number, username: string, email: string }) => {
-        this.userId = data.userId;
-      }
-    });
+              private fb: FormBuilder,
+              private sessionService: SessionService) {
     this.sharedSrv.setUserConnected(true);
     this.sharedSrv.setShowButtons(true);
   }
 
   ngOnInit(): void {
+    this.userId = this.sessionService?.sessionInformation?.userId as number;
     this.post$.pipe(
       map((post) => {
         this.comments$ = this.commentSrv.getComments(post.id);

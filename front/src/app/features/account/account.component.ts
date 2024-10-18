@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {SharedService} from "../../shared/shared.service";
 import {FormBuilder, Validators} from "@angular/forms";
-import {AuthService} from "../../features/auth/service/auth.service";
+import {AuthService} from "../auth/service/auth.service";
 import {Observable} from "rxjs";
 import {User} from "../../core/models/user";
 import {Router} from "@angular/router";
 import {Topic} from "../../core/models/topic";
-import {TopicService} from "../../core/services/topic.service";
+import {TopicService} from "../subject/service/topic.service";
+import {SessionService} from "../../shared/session.service";
 
 @Component({
   selector: 'app-account',
@@ -29,19 +30,15 @@ export class AccountComponent implements OnInit {
               private authSrv: AuthService,
               private router: Router,
               private sharedSrv: SharedService,
-              private topicSrv: TopicService) {
-    this.sharedSrv.loadUser().subscribe({
-      next: (data: { userId: number, username: string, email: string }) => {
-        this.userId = data.userId;
-        this.username = data.username;
-        this.email = data.email;
-        this.topicsSubscribed$ = this.topicSrv.getAllTopicsSubscribedByUserId(this.userId);
-      }
-    });
+              private topicSrv: TopicService,
+              private sessionService: SessionService) {
     this.sharedSrv.setUserConnected(true);
     this.sharedSrv.setShowButtons(true);
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userId = this.sessionService?.sessionInformation?.userId as number;
+    this.topicsSubscribed$ = this.topicSrv.getAllTopicsSubscribedByUserId(this.userId);
+  }
 
   submit() {
     const modifiedUser = this.form.value as User;

@@ -5,6 +5,8 @@ import {Router} from "@angular/router";
 import {AuthSuccess} from "../../../../core/models/auth-success";
 import {LoginRequest} from "../../../../core/models/login-request";
 import {SharedService} from "../../../../shared/shared.service";
+import {SessionInformation} from "../../../../core/models/session-information";
+import {SessionService} from "../../../../shared/session.service";
 
 @Component({
   selector: 'app-login',
@@ -26,6 +28,7 @@ export class LoginComponent implements OnInit {
               private fb: FormBuilder,
               private router: Router,
               private sharedSrv: SharedService,
+              private sessionService: SessionService
               ) {
     this.sharedSrv.setUserConnected(true);
     this.sharedSrv.setShowButtons(false);
@@ -50,11 +53,14 @@ export class LoginComponent implements OnInit {
     this.authService.login(loginRequest).subscribe({
       next: (response: AuthSuccess) => {
         localStorage.setItem('token', response.token);
-        this.sharedSrv.setUserConnected(true);
-        this.sharedSrv.setShowButtons(true);
-        this.router.navigate(['/feed']);
-      },
-      error: () => this.onError = true
+        this.authService.me().subscribe({
+          next: (user: SessionInformation) => {
+            this.sessionService.logIn(user);
+            this.router.navigate(['/feed']);
+          }
+        });
+        error: () => this.onError = true
+      }
     });
   }
 

@@ -11,7 +11,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {JwtInterceptor} from "./interceptor/jwt.interceptor";
-import { AccountComponent } from './pages/account/account.component';
+import { AccountComponent } from './features/account/account.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatToolbarModule} from "@angular/material/toolbar";
