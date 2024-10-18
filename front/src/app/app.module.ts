@@ -20,12 +20,13 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {SidebarModule} from "primeng/sidebar";
 import {ButtonModule} from "primeng/button";
+import { HeaderComponent } from './features/header/header.component';
 
 
 
 
 @NgModule({
-  declarations: [AppComponent, AccountComponent],
+  declarations: [AppComponent, AccountComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

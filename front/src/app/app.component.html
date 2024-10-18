@@ -1,34 +1,4 @@
-<ng-container >
-<section class="header">
-  <a routerLink=''>
-    <img src="assets/logo_p6.png" alt="logo" class="image"/>
-  </a>
-  <div class="example-button-row">
-    <a mat-button routerLink="feed">Articles</a>
-    <a mat-button routerLink="topics">Thèmes</a>
-    <a mat-button routerLink="account">
-      <img src="assets/user.png" alt="user-account" class="user-picto">
-    </a>
-  </div>
-</section>
-</ng-container>
-<!-- Mobile version of Header-->
-<!--<mat-drawer-container class="example-container" autosize>-->
-<!--  <mat-drawer #drawer class="example-sidenav" mode="side">-->
-<!--        <a mat-button routerLink="feed">Articles</a>-->
-<!--        <a mat-button routerLink="topics">Thèmes</a>-->
-<!--    <a mat-button routerLink="account"><mat-icon aria-hidden="false" aria-label="User Account" fontIcon="account_circle"></mat-icon></a>-->
-<!--  </mat-drawer>-->
-
-<!--  <div class="example-sidenav-content">-->
-<!--    <button type="button" mat-button (click)="drawer.toggle()">-->
-<!--            <mat-icon aria-hidden="false" aria-label="User Account" fontIcon="menu"></mat-icon>-->
-<!--    </button>-->
-<!--  </div>-->
-
-<!--</mat-drawer-container>-->
-
-
+<app-header></app-header>
 <router-outlet></router-outlet>
 
 
