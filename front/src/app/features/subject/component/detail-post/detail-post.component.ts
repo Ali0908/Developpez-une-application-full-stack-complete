@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {SharedService} from "../../shared/shared.service";
-import {CommentService} from "../../core/services/comment.service";
+import {SharedService} from "../../../../shared/shared.service";
+import {CommentService} from "../../../../core/services/comment.service";
 import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
-import {Comment} from "../../core/models/comment";
+import {Comment} from "../../../../core/models/comment";
 import {FormBuilder, Validators} from "@angular/forms";
-import {CommentRequest} from "../../core/models/comment-request";
+import {CommentRequest} from "../../../../core/models/comment-request";
 
 @Component({
   selector: 'app-detail-post',

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
-import {Topic} from "../../core/models/topic";
-import {TopicService} from "../../core/services/topic.service";
+import {Topic} from "../../../../core/models/topic";
+import {TopicService} from "../../../../core/services/topic.service";
 import {FormBuilder, Validators} from "@angular/forms";
-import {Post} from "../../core/models/post";
-import {SharedService} from "../../shared/shared.service";
-import {PostService} from "../../core/services/post.service";
+import {Post} from "../../../../core/models/post";
+import {SharedService} from "../../../../shared/shared.service";
+import {PostService} from "../../../../core/services/post.service";
 import {Router} from "@angular/router";
 
 @Component({

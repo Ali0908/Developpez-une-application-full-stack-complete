@@ -1,8 +1,8 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {SharedService} from "../../shared/shared.service";
-import {Feed} from "../../core/models/feed";
+import {SharedService} from "../../../../shared/shared.service";
+import {Feed} from "../../../../core/models/feed";
 import {Observable} from "rxjs";
-import {PostService} from "../../core/services/post.service";
+import {PostService} from "../../../../core/services/post.service";
 import {Router} from "@angular/router";
 import {map} from "rxjs/operators";
 

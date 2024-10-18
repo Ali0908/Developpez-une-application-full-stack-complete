@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
-import {Topic} from "../../core/models/topic";
-import {TopicService} from "../../core/services/topic.service";
-import {SharedService} from "../../shared/shared.service";
-import {SubscriptionTopic} from "../../core/models/subscription-topic";
+import {Topic} from "../../../../core/models/topic";
+import {TopicService} from "../../../../core/services/topic.service";
+import {SharedService} from "../../../../shared/shared.service";
+import {SubscriptionTopic} from "../../../../core/models/subscription-topic";
 
 @Component({
   selector: 'app-topic',

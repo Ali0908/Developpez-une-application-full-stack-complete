@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/login']);
         },
         error: () => {
-          window.alert('Inscription échouée');
+          this.matSnackBar.open('Inscription échouée', 'Fermer', { duration: 2000 });
         },
       });
     }
