@@ -1,10 +1,11 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {AuthService} from "../../core/services/auth.service";
-import {RegisterRequest} from "../../core/models/register-request";
-import {AuthSuccess} from "../../core/models/auth-success";
-import {SharedService} from "../../shared/shared.service";
+import {AuthService} from "../../service/auth.service";
+import {RegisterRequest} from "../../../../core/models/register-request";
+import {AuthSuccess} from "../../../../core/models/auth-success";
+import {SharedService} from "../../../../shared/shared.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,9 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private fb: FormBuilder,
     private router: Router,
-    private sharedSrv: SharedService
+    private sharedSrv: SharedService,
+    private matSnackBar: MatSnackBar,
+
   ) {
     this.sharedSrv.setUserConnected(true);
     this.sharedSrv.setShowButtons(false);
@@ -36,9 +39,8 @@ export class RegisterComponent implements OnInit {
     const registerRequest = this.form.value as RegisterRequest;
     this.authService.register(registerRequest).subscribe({
         next: (response: AuthSuccess) => {
-          localStorage.setItem('token', response.token);
-          this.router.navigate(['']);
-          window.alert('Inscription réussie');
+         this.matSnackBar.open(response.toString(), 'Fermer', { duration: 2000 });
+          this.router.navigate(['/login']);
         },
         error: () => {
           window.alert('Inscription échouée');

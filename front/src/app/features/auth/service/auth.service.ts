@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {environment} from "../../../environments/environment.prod";
-import {RegisterRequest} from "../models/register-request";
-import {LoginRequest} from "../models/login-request";
-import {AuthSuccess} from "../models/auth-success";
-import {User} from "../models/user";
+import {environment} from "../../../../environments/environment.prod";
+import {RegisterRequest} from "../../../core/models/register-request";
+import {LoginRequest} from "../../../core/models/login-request";
+import {AuthSuccess} from "../../../core/models/auth-success";
+import {User} from "../../../core/models/user";
 
 
 @Injectable({

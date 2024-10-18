@@ -21,13 +21,11 @@ export class FeedComponent implements OnInit {
                private postSrv: PostService,
                private router: Router,
                private cd: ChangeDetectorRef) {
-    alert('Toto 1');
     this.sharedSrv.setUserConnected(true);
     this.sharedSrv.setShowButtons(true);
   }
 
   ngOnInit(): void {
-    alert('Toto 2');
     this.sharedSrv.loadUser().subscribe({
       next: (data: { userId: number, username: string, email: string }) => {
         this.userId = data.userId;

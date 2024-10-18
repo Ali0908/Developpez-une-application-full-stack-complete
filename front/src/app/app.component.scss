@@ -1,9 +1,11 @@
+
 .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     background-color: #ffffff;
+    font-size: 15px;
 
   .image{
     width: 10%;
@@ -31,11 +33,39 @@
 }
 
 .mat-accordion {
-  display: block;
-  transform-origin: right;
-  transform: rotate(-90deg) translateX(-600px); /* rotate and position it; translateX value corresponds to panel height */
+  display: flex;
+  flex-direction: column; /* Ensure panels are stacked vertically */
+  width: 300px; /* Adjust as needed */
 }
 .menu-button {
   display: flex;
   justify-content: flex-end;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end; /* Aligns the accordion to the right side */
+  align-items: flex-start; /* Aligns the accordion to the top */
+  height: 100vh; /* Full height of the viewport */
+  padding-right: 20px; /* Optional: adds space between the accordion and the right edge */
+}
+
+.example-container{
+//display: flex;
+//justify-content: flex-end;
+//align-items: flex-end;
+}
+.example-sidenav{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.user-picto{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

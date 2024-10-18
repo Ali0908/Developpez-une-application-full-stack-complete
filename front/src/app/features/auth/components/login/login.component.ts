@@ -1,10 +1,10 @@
 import {ChangeDetectorRef, Component, HostListener, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {AuthService} from "../../core/services/auth.service";
+import {AuthService} from "../../service/auth.service";
 import {Router} from "@angular/router";
-import {AuthSuccess} from "../../core/models/auth-success";
-import {LoginRequest} from "../../core/models/login-request";
-import {SharedService} from "../../shared/shared.service";
+import {AuthSuccess} from "../../../../core/models/auth-success";
+import {LoginRequest} from "../../../../core/models/login-request";
+import {SharedService} from "../../../../shared/shared.service";
 
 @Component({
   selector: 'app-login',

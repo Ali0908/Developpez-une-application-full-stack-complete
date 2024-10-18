@@ -1,39 +1,34 @@
-<ng-container *ngIf="!hideHeader">
-<section class="header" *ngIf="userConnected">
+<ng-container >
+<section class="header">
   <a routerLink=''>
-    <img src="/assets/logo_p6.png" alt="logo" class="image"/>
+    <img src="assets/logo_p6.png" alt="logo" class="image"/>
   </a>
-  <div class="example-button-row" *ngIf="showButtons">
+  <div class="example-button-row">
     <a mat-button routerLink="feed">Articles</a>
     <a mat-button routerLink="topics">Thèmes</a>
     <a mat-button routerLink="account">
-      <mat-icon aria-hidden="false" aria-label="User Account" fontIcon="account_circle"></mat-icon>
+      <img src="assets/user.png" alt="user-account" class="user-picto">
     </a>
   </div>
 </section>
 </ng-container>
-
 <!-- Mobile version of Header-->
-<!--<div class="menu-button">-->
-<!--  <button mat-button (click)="toggleOpening()">-->
-<!--    <mat-icon>menu</mat-icon>-->
-<!--  </button>-->
-<!--</div>-->
-<!--<mat-accordion multi >-->
-<!--  <mat-expansion-panel>-->
-<!--    <div class="header-btn">-->
-<!--      <div class="left-btn">-->
-<!--        <a mat-button routerLink="account">-->
-<!--          <mat-icon aria-hidden="false" aria-label="User Account" fontIcon="account_circle"></mat-icon>-->
-<!--        </a>-->
-<!--      </div>-->
-<!--      <div class="right-btn">-->
-<!--        <a mat-button routerLink="topics">Thèmes</a>-->
+<!--<mat-drawer-container class="example-container" autosize>-->
+<!--  <mat-drawer #drawer class="example-sidenav" mode="side">-->
 <!--        <a mat-button routerLink="feed">Articles</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    </mat-expansion-panel>-->
-<!--</mat-accordion>-->
+<!--        <a mat-button routerLink="topics">Thèmes</a>-->
+<!--    <a mat-button routerLink="account"><mat-icon aria-hidden="false" aria-label="User Account" fontIcon="account_circle"></mat-icon></a>-->
+<!--  </mat-drawer>-->
+
+<!--  <div class="example-sidenav-content">-->
+<!--    <button type="button" mat-button (click)="drawer.toggle()">-->
+<!--            <mat-icon aria-hidden="false" aria-label="User Account" fontIcon="menu"></mat-icon>-->
+<!--    </button>-->
+<!--  </div>-->
+
+<!--</mat-drawer-container>-->
+
+
 <router-outlet></router-outlet>
 
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from './../core/models/user';
 import {BehaviorSubject, Observable} from "rxjs";
 import {map} from 'rxjs/operators';
-import {AuthService} from "../core/services/auth.service";
+import {AuthService} from "../features/auth/service/auth.service";
 import {Feed} from "../core/models/feed";
 
 @Injectable({

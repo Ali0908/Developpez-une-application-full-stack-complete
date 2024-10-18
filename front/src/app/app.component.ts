@@ -1,6 +1,8 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
 import {SharedService} from "./shared/shared.service";
 import {MatAccordion} from "@angular/material/expansion";
+import {PrimeNGConfig} from "primeng/api";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,14 +10,16 @@ import {MatAccordion} from "@angular/material/expansion";
   styleUrls: ['./app.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   title = 'front';
   userConnected = false;
   showButtons = false;
   hideHeader = false;
   openAccordion = false;
-  constructor( private  sharedSrv: SharedService) {
+  showFiller = false;
+  visibleSidebar = false;
+  constructor( private  sharedSrv: SharedService, private primengConfig: PrimeNGConfig, private router: Router) {
     this.sharedSrv.userConnected$.subscribe({
       next: (userConnected: boolean) => {
         this.userConnected = userConnected;
@@ -44,5 +48,23 @@ export class AppComponent {
     } else {
       this.accordion.closeAll();
     }
+  }
+  ngOnInit() {
+    this.primengConfig.ripple = true;
+  }
+  toggle(){
+    this.visibleSidebar = !this.visibleSidebar;
+  }
+
+  navigateToArticle() {
+    this.router.navigate(['/article']);
+  }
+
+  navigateToThemes() {
+    this.router.navigate(['/themes']);
+  }
+
+  navigateToAccount() {
+    this.router.navigate(['/account']);
   }
 }

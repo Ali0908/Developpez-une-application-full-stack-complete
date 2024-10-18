@@ -5,20 +5,20 @@
 <mat-card class="card-container">
   <mat-card-title>{{post.title}}</mat-card-title>
   <mat-card-content>
-    <p>{{post.date | date: 'dd-MM-yyyy' }}</p>
-    <p>{{post.authorUsername}}</p>
+    <div class="row">
+      <p>{{post.date | date: 'dd-MM-yyyy' }}</p>
+      <p>{{post.authorUsername}}</p>
+    </div>
     <p>{{post.content}}</p>
   </mat-card-content>
 </mat-card>
 <hr>
 <div class="comment-container">
   <h2>Commentaires</h2>
-  <mat-card *ngFor="let comment of comments$ | async" class="card">
-    <mat-card-content>
-      <p>{{comment.authorUsername}}</p>
-      <p>{{comment.content}}</p>
-    </mat-card-content>
-  </mat-card>
+  <div *ngFor="let comment of comments$ | async" class="comment">
+      <span>{{comment.authorUsername}}</span>
+      <blockquote class="comment-content">{{comment.content}}</blockquote>
+  </div>
   <form class="comment" [formGroup]="form" (ngSubmit)="submit(post.id)">
     <mat-form-field appearance="outline">
       <mat-label>contenu du commentaire</mat-label>
