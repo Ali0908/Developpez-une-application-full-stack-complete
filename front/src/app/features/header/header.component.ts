@@ -1,6 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatAccordion} from "@angular/material/expansion";
-import {SharedService} from "../../shared/shared.service";
+import {Component, HostListener, OnInit} from '@angular/core';
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-header',
@@ -8,47 +8,79 @@ import {SharedService} from "../../shared/shared.service";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @ViewChild(MatAccordion) accordion!: MatAccordion;
-  title = 'front';
-  userConnected = false;
-  showButtons = false;
-  hideHeader = false;
   openAccordion = false;
-  showFiller = false;
-  visibleSidebar = false;
-  constructor( private  sharedSrv: SharedService) {
-    this.sharedSrv.userConnected$.subscribe({
-      next: (userConnected: boolean) => {
-        this.userConnected = userConnected;
-      },
-      error: () => this.userConnected = false
-    });
-    this.sharedSrv.showButtons$.subscribe({
-      next: (showButtons: boolean) => {
-        this.showButtons = showButtons;
-      },
-      error: () => this.showButtons = false
-    });
-    this.sharedSrv.hideHeader$.subscribe({
-      next: (hideHeader: boolean) => {
-        this.hideHeader = hideHeader;
-      },
-      error: () => this.showButtons = false
-    });
+  showHeaderLogo = false;
+  showHeaderLinks = false;
+  showVerticalLine = false;
+  isMobile = false;
+  constructor(private router: Router, private  activatedRoute: ActivatedRoute) {
+  }
+
+  // Detect window resize
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  // Check if the screen width is less than 500px
+  checkScreenSize() {
+    this.isMobile = window.innerWidth <= 500;
   }
 
 
-  toggleOpening() {
-    this.openAccordion = !this.openAccordion;  // Toggle openAccordion state
-    if (this.openAccordion) {
-      this.accordion.openAll();
-    } else {
-      this.accordion.closeAll();
-    }
-  }
+  toggleHeader() {
+    this.openAccordion = !this.openAccordion; }
+
   ngOnInit() {
+    this.checkScreenSize();
+    this.detectRouteChange();
   }
-  toggle(){
-    this.visibleSidebar = !this.visibleSidebar;
+  detectRouteChange() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        let currentRoute = this.activatedRoute;
+
+        // Traverse to the deepest active route
+        while (currentRoute.firstChild) {
+          currentRoute = currentRoute.firstChild;
+        }
+
+        // Store the URL using the current activated route
+        const currentUrl = this.router.url;  // You can store this URL
+
+        if(currentUrl === '/'){
+          this.showHeaderLogo = false;
+          this.showHeaderLinks = false;
+          this.showVerticalLine = false;
+        } else if (currentUrl === '/login'){
+          this.showHeaderLogo = true;
+          this.showVerticalLine = true;
+          this.showHeaderLinks = false;
+        } else {
+          this.showHeaderLogo = true;
+          this.showHeaderLinks = true;
+          this.showVerticalLine = true;
+        }
+      }
+    });
+  }
+
+
+  closeAccordion() {
+    this.openAccordion = false;
   }
 }
+//
+// this.router.events.subscribe(event => {
+//   if (event instanceof NavigationEnd) {
+//     this.activatedRoute?.title.subscribe({
+//       next: (title: string | undefined) => {
+//         if (title !== undefined) {
+//           currentTitle = title;
+//           this.isHomePage = currentTitle === 'Home';
+//           this.isLoginPage = currentTitle === 'Login';
+//         }
+//       }
+//     });
+//   }
+// });

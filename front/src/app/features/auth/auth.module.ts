@@ -24,7 +24,9 @@ const materialModules = [
   declarations: [
     RegisterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+  ],
+  exports: [
   ],
   imports: [
     AuthRoutingModule,
@@ -32,7 +34,7 @@ const materialModules = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ...materialModules
+    ...materialModules,
   ]
 })
 export class AuthModule { }

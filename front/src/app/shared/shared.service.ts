@@ -24,7 +24,6 @@ export class SharedService {
 
   setUserConnected(userConnected: boolean): void {
     this.storeUserConnected  = localStorage.setItem('userConnected', String(userConnected));
-    console.log(typeof this.storeUserConnected);
     this.userConnectedSubject.next(userConnected);
   }
   setShowButtons(showButtons: boolean): void {

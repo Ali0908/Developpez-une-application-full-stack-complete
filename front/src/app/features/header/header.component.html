@@ -1,29 +1,34 @@
-<!--<ng-container >-->
-<!--  <section class="header">-->
-<!--    <a routerLink=''>-->
-<!--      <img src="assets/logo_p6.png" alt="logo" class="image"/>-->
-<!--    </a>-->
-<!--    <div class="example-button-row">-->
+<ng-container>
+  <section class="header">
+    <div class="header-logo" *ngIf="showHeaderLogo">
+      <a mat-button routerLink=''>
+        <img src="assets/logo_p6.png" alt="logo" class="image"/>
+      </a>
+    </div>
+    <div class="example-button-row" *ngIf="showHeaderLinks">
+      <a mat-button routerLink="feed">Articles</a>
+      <a mat-button routerLink="topics">Thèmes</a>
+      <a mat-button routerLink="account"><mat-icon aria-hidden="false"
+      aria-label="User Account" fontIcon="account_circle"></mat-icon></a>
+    </div>
+  </section>
+  <hr *ngIf="showVerticalLine">
+</ng-container>
+<!-- Mobile version of Header-->
+<!--<div class="mobile-header">-->
+<!--  <div class="toggle-btn">-->
+<!--    <button type="button" mat-button (click)="toggleHeader()" *ngIf="!openAccordion">-->
+<!--      <mat-icon aria-hidden="false" aria-label="User Account" fontIcon="menu"></mat-icon>-->
+<!--    </button>-->
+<!--  </div>-->
+<!--  <div class="header-links" *ngIf="openAccordion" (click)="closeAccordion()">-->
+<!--    <div class="top-links">-->
 <!--      <a mat-button routerLink="feed">Articles</a>-->
 <!--      <a mat-button routerLink="topics">Thèmes</a>-->
-<!--      <a mat-button routerLink="account">-->
-<!--        <img src="assets/user.png" alt="user-account" class="user-picto">-->
-<!--      </a>-->
 <!--    </div>-->
-<!--  </section>-->
-<!--</ng-container>-->
-<!-- Mobile version of Header-->
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-        <a mat-button routerLink="feed">Articles</a>
-        <a mat-button routerLink="topics">Thèmes</a>
-    <a mat-button routerLink="account"><mat-icon aria-hidden="false" aria-label="User Account" fontIcon="account_circle"></mat-icon></a>
-  </mat-drawer>
+<!--    <div class="bottom-links">-->
+<!--      <a mat-button routerLink="account"><mat-icon aria-hidden="false" aria-label="User Account" fontIcon="account_circle"></mat-icon></a>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
-  <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-            <mat-icon aria-hidden="false" aria-label="User Account" fontIcon="menu"></mat-icon>
-    </button>
-  </div>
-
-</mat-drawer-container>

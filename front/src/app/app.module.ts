@@ -21,6 +21,8 @@ import {MatListModule} from "@angular/material/list";
 import {SidebarModule} from "primeng/sidebar";
 import {ButtonModule} from "primeng/button";
 import { HeaderComponent } from './features/header/header.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {NgOptimizedImage} from "@angular/common";
 
 
 
@@ -46,10 +48,15 @@ import { HeaderComponent } from './features/header/header.component';
     MatListModule,
     SidebarModule,
     ButtonModule,
+    MatDialogModule,
+    NgOptimizedImage,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
   ],
   bootstrap: [AppComponent],
+  exports: [
+    HeaderComponent
+  ]
 })
 export class AppModule {}
