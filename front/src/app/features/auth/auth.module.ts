@@ -11,13 +11,15 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {SubjectRoutingModule} from "../subject/subject-routing.module";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 const materialModules = [
   MatButtonModule,
   MatCardModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule
+  MatInputModule,
+  MatSnackBarModule
 ]
 
 @NgModule({

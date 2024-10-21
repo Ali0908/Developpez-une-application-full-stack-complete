@@ -36,6 +36,7 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.sessionService?.sessionInformation?.userId as number;
+
   }
 
   submit() {

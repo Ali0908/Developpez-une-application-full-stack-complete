@@ -1,4 +1,4 @@
-<ng-container>
+<ng-container *ngIf="!isMobile">
   <section class="header">
     <div class="header-logo" *ngIf="showHeaderLogo">
       <a mat-button routerLink=''>
@@ -15,20 +15,22 @@
   <hr *ngIf="showVerticalLine">
 </ng-container>
 <!-- Mobile version of Header-->
-<!--<div class="mobile-header">-->
-<!--  <div class="toggle-btn">-->
-<!--    <button type="button" mat-button (click)="toggleHeader()" *ngIf="!openAccordion">-->
-<!--      <mat-icon aria-hidden="false" aria-label="User Account" fontIcon="menu"></mat-icon>-->
-<!--    </button>-->
-<!--  </div>-->
-<!--  <div class="header-links" *ngIf="openAccordion" (click)="closeAccordion()">-->
-<!--    <div class="top-links">-->
-<!--      <a mat-button routerLink="feed">Articles</a>-->
-<!--      <a mat-button routerLink="topics">Thèmes</a>-->
-<!--    </div>-->
-<!--    <div class="bottom-links">-->
-<!--      <a mat-button routerLink="account"><mat-icon aria-hidden="false" aria-label="User Account" fontIcon="account_circle"></mat-icon></a>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+<div class="mobile-header" *ngIf="isMobile">
+  <ng-container *ngIf="showHeaderMobileContent">
+  <div class="toggle-btn">
+    <button type="button" mat-button (click)="toggleHeader()" *ngIf="!openAccordion">
+      <mat-icon aria-hidden="false" aria-label="User Account" fontIcon="menu"></mat-icon>
+    </button>
+  </div>
+  <div #headerLinks class="header-links" *ngIf="openAccordion">
+    <div class="top-links">
+      <a mat-button routerLink="feed">Articles</a>
+      <a mat-button routerLink="topics">Thèmes</a>
+    </div>
+    <div class="bottom-links">
+      <a mat-button routerLink="account"><mat-icon aria-hidden="false" aria-label="User Account" fontIcon="account_circle"></mat-icon></a>
+    </div>
+  </div>
+  </ng-container>
+</div>
 
