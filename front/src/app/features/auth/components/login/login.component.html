@@ -1,15 +1,16 @@
 <a routerLink=''>
   <mat-icon aria-hidden="false" aria-label="Arrow Back" fontIcon="arrow_back" class="arrow"></mat-icon>
 </a>
-<img src="/front/src/assets/logo_p6.png" alt="logo" class="logo" *ngIf="showLogo" />
+<img src="assets/logo_p6.png" alt="logo" class="logo-header" *ngIf="showLogo" />
+
 <div class="login">
+  <div class="login-header">
+  <h4>Se connecter</h4>
+  </div>
   <mat-card class="form-card">
-    <mat-card-header>
-      <mat-card-title>Se connecter</mat-card-title>
-    </mat-card-header>
     <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
       <mat-card-content>
-        <h3>Email ou Nom d'utilisateur</h3>
+        <h3>Email ou nom d'utilisateur</h3>
         <mat-form-field appearance="outline">
           <input matInput formControlName="identifier">
           <mat-error *ngIf="form.get('identifier')?.hasError('identifier')">Merci de saisir un email ou un nom d'utilisateur</mat-error>
@@ -25,7 +26,7 @@
           </button>
         </mat-form-field>
         <mat-card-actions>
-          <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Se connecter</button>
           <p *ngIf="onError" class="error">Email/Mot de passe non enregistré</p>
         </mat-card-actions>
       </mat-card-content>

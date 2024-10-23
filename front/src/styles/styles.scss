@@ -7,8 +7,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @media (max-width: 500px) {
   .logo {
     display: block;
-    width: 100px; /* Ajuste la taille selon tes besoins */
+    width: 30em; /* Ajuste la taille selon tes besoins */
     margin-bottom: 10%;
+  }
+
+  .logo-header{
+    position: absolute;
+    right: 27%;
+    margin-top: 1%;
+    width: 200px;
+    margin-top: 10%;
   }
 }
 
@@ -17,6 +25,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
-  background-color: #EEEEEE;
-
 }

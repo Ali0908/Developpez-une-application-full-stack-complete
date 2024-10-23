@@ -14,9 +14,9 @@ export class HeaderComponent implements OnInit {
   showVerticalLine = false;
   showHeaderMobileContent = false;
   isMobile = false;
+
   constructor(private router: Router,
-              private activatedRoute: ActivatedRoute,
-             private elementRef: ElementRef) {
+              private activatedRoute: ActivatedRoute) {
   }
 
   // Detect window resize

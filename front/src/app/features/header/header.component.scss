@@ -36,27 +36,16 @@
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.mobile-header {
-  position: absolute;
-  top: 0;
-  right:0;
-  z-index: 1;
+
+.logo-mobile{
   width: 5em;
-  background-color: #EEEEEE;
+}
+.header-sidenav{
+  display: flex;
+  justify-content: space-between;
+}
 
-  .header-links {
-    margin-top: 2%;
-    width: 20%;
-    height: 100vh;
-
-    .top-links{
-      position: absolute;
-      top: 0;
-    }
-
-    .bottom-links{
-      position: absolute;
-      bottom: 0;
-    }
-  }
+.sidenav{
+  display: flex;
+  flex-direction: column;
 }
