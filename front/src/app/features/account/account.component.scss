@@ -40,6 +40,9 @@
   flex-direction: column;
   align-items: center;
 }
+.account-card{
+  box-shadow: none;
+}
 
 @media(max-width: 500px){
   .account-topic-container{

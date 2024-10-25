@@ -8,8 +8,9 @@
     <div class="example-button-row" *ngIf="showHeaderLinks">
       <a mat-button routerLink="feed">Articles</a>
       <a mat-button routerLink="topics">Thèmes</a>
-      <a mat-button routerLink="account"><mat-icon aria-hidden="false"
-      aria-label="User Account" fontIcon="account_circle"></mat-icon></a>
+      <a mat-button routerLink="account">
+        <img src="assets/user.png" alt="logo" class="user-account"/>
+      </a>
     </div>
   </section>
   <hr *ngIf="showVerticalLine">

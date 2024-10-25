@@ -2,7 +2,6 @@
 <div class="detail-post-under-content">
 <div *ngIf="post$ | async as post">
 <mat-card class="card-container">
-
     <div class="detail-post-title">
       <a routerLink='/feed' target="_blank">
         <mat-icon aria-hidden="false" aria-label="Arrow Back" fontIcon="arrow_back" class="icon-style"></mat-icon>
@@ -12,6 +11,7 @@
   <mat-card-content>
     <div class="row">
       <p>{{post.date | date: 'dd-MM-yyyy' }}</p>
+      <p>{{post.topicTitle}}</p>
       <p>{{post.authorUsername}}</p>
     </div>
     <p>{{post.content}}</p>

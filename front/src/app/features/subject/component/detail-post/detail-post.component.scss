@@ -1,7 +1,7 @@
 
 .row{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .comment{
@@ -47,6 +47,13 @@
 }
 .icon-style{
   color: black;
+}
+
+.detail-post-card-content{
+  box-shadow: none;
+}
+.card-container{
+  box-shadow: none!important;
 }
 
 @media (max-width: 500px) {

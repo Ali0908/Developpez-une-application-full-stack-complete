@@ -20,8 +20,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
     password: ['', [Validators.required,Validators.minLength(8),
       Validators.pattern(/^(?=.*[A-Z]).*(?=.*[a-z]).*(?=.*[!@#$%^&*()_+\-=\[\]{};',.:\/?]).{8,}$/)]]
   });
-  public  showLogo = false;
+  showLogo = false;
   private registerSubscription!: Subscription;
+  hide = true;
 
   constructor(
     private authService: AuthService,

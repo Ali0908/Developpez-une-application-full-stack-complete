@@ -22,11 +22,15 @@
             </mat-form-field>
         <h3>Mot de passe</h3>
             <mat-form-field appearance="outline">
-              <input matInput formControlName="password" required>
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
               <mat-error *ngIf="form.get('password')?.hasError('required')">Merci de saisir un mot de passe</mat-error>
               <mat-error class="error" *ngIf="form.get('password')?.hasError('minlength') || form.get('password')?.hasError('pattern')">
                 Merci de saisir un mot de passe contenant au moins 8 caractères, une majuscule, une minuscule et un caractère spécial
               </mat-error>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                      [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
             </mat-form-field>
             <button mat-raised-button color="primary" type="submit" class="submit-container"  [disabled]="form.invalid">S'inscrire</button>
       </mat-card-content>
