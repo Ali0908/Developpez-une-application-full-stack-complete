@@ -3,12 +3,12 @@
 </a>
 <img src="assets/logo_p6.png" alt="logo" class="logo-header" *ngIf="showLogo" />
 <div class="register">
-  <div class="login-header">
-    <h4>Inscription</h4>
+  <div>
+    <span class="auth-header">Inscription</span>
   </div>
-  <mat-card>
-    <form [formGroup]="form" (ngSubmit)="submit()">
-      <mat-card-content>
+  <mat-card class="register-card">
+    <form  [formGroup]="form" (ngSubmit)="submit()">
+      <mat-card-content class="register-form">
         <h3>Nom d'utilisateur</h3>
         <mat-form-field appearance="outline">
               <input matInput formControlName="username" required>

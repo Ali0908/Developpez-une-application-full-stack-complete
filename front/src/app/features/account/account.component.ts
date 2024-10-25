@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {SharedService} from "../../shared/shared.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../auth/service/auth.service";
@@ -34,7 +34,8 @@ export class AccountComponent implements OnInit, OnDestroy {
               private router: Router,
               private topicSrv: TopicService,
               private sessionService: SessionService,
-              private matSnackBar: MatSnackBar) {
+              private matSnackBar: MatSnackBar,
+              private cd: ChangeDetectorRef) {
   }
   ngOnInit(): void {
     const savedSession = localStorage.getItem('sessionInformation');
@@ -52,6 +53,8 @@ export class AccountComponent implements OnInit, OnDestroy {
     this.updateMeSubscription= this.authSrv.updateMe(modifiedUser).subscribe({
       next: () => {
         this.matSnackBar.open('Compte mis à jour', 'Fermer', { duration: 2000 });
+        // Déconnecter le user si la modification est réussie
+        this.sessionService.logOut();
       },
       error: () => {
         this.matSnackBar.open('Erreur lors de la mise à jour', 'Fermer', { duration: 2000 });
@@ -73,7 +76,8 @@ export class AccountComponent implements OnInit, OnDestroy {
     this.unsubscribeTopicSubscription =  this.topicSrv.unsubscribeToTopic({userId: this.userId, topicId: topicId}).subscribe({
       next: () => {
         this.matSnackBar.open('Désabonnement réussi', 'Fermer', { duration: 2000 });
-        location.reload();
+        this.topicsSubscribed$ = this.topicSrv.getAllTopicsSubscribedByUserId(this.userId);
+        this.cd.detectChanges();
       },
       error: () => {
         this.matSnackBar.open('Erreur lors du désabonnement', 'Fermer', { duration: 2000 });

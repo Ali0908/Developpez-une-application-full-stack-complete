@@ -24,6 +24,17 @@
   text-align: center/* Ajoute de l'espace au-dessus du bouton */
 }
 
+.register-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-card{
+  box-shadow: none;
+}
+
 @media(max-width: 500px) {
   .register {
     margin-top: 40%;

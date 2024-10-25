@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Inter;
+; }
 
 /* Media query pour les écrans de taille <= 500px */
 @media (max-width: 500px) {
@@ -26,4 +27,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
 
+}
+
+.auth-header{
+  font-size: 24px;
+  font-weight: 400;
 }
