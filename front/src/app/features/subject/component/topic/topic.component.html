@@ -5,7 +5,10 @@
       <p>{{topic.description}}</p>
     </mat-card-content>
     <mat-card-actions class="subscribe-btn">
-      <button mat-raised-button color="primary" (click)="subscribe(topic.id)">S'abonner</button>
+      <button mat-raised-button color="primary"
+              (click)="subscribe(topic.id)"
+              [disabled]="!!subscribedTopics.get(topic.id) || false">
+        S'abonner</button>
     </mat-card-actions>
   </mat-card>
 </div>

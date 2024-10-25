@@ -12,6 +12,10 @@
     display: flex;
     justify-content: center;
   }
+  .disable-button{
+    background-color: red;
+    cursor: crosshair;
+  }
 }
 
 @media(max-width: 500px){

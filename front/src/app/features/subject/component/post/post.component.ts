@@ -4,7 +4,6 @@ import {Topic} from "../../../../core/models/topic";
 import {TopicService} from "../../service/topic.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {Post} from "../../../../core/models/post";
-import {SharedService} from "../../../../shared/shared.service";
 import {PostService} from "../../service/post.service";
 import {Router} from "@angular/router";
 import {SessionService} from "../../../../shared/session.service";
