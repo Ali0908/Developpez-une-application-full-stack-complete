@@ -21,15 +21,17 @@ export class FeedComponent implements OnInit {
   constructor( private sharedSrv: SharedService,
                private postSrv: PostService,
                private router: Router,
-               private cd: ChangeDetectorRef,
                private sessionService: SessionService) {
-    this.sharedSrv.setUserConnected(true);
-    this.sharedSrv.setShowButtons(true);
   }
 
   ngOnInit(): void {
-    this.userId = this.sessionService?.sessionInformation?.userId as number;
-    this.feed$ = this.postSrv.getFeed(this.userId);
+
+    const savedSession = localStorage.getItem('sessionInformation');
+    if (savedSession) {
+      this.sessionService.sessionInformation = JSON.parse(savedSession);
+      this.userId = this.sessionService?.sessionInformation?.userId as number;
+      this.feed$ = this.postSrv.getFeed(this.userId);
+    }
   }
 
   navigateToCreatePost() {
@@ -38,6 +40,7 @@ export class FeedComponent implements OnInit {
 
   navigateToDetailPost(post: Feed) {
     this.sharedSrv.getDetailPost(post);
+    localStorage.setItem('selectedPost', JSON.stringify(post)); // Enregistre le post sélectionné dans localStorage
     this.router.navigate(['/detail-post/' + post.id]);
   }
 

@@ -6,13 +6,13 @@
     <form class="account-form" [formGroup]="form" (ngSubmit)="submit()">
       <mat-card-content class="account-mat-card-content">
         <mat-form-field appearance="outline">
-          <mat-label>Username</mat-label>
-          <input matInput [placeholder]="username" formControlName="username">
+          <mat-label>{{username}}</mat-label>
+          <input matInput formControlName="username">
           <mat-error *ngIf="form.get('username')?.hasError('required')">Merci de saisir un nom d'utilisateur</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
-          <mat-label>email@email.fr</mat-label>
-          <input matInput [placeholder]="email" formControlName="email">
+          <mat-label>{{email}}</mat-label>
+          <input matInput  formControlName="email">
           <mat-error *ngIf="form.get('email')?.hasError('required')">Merci de saisir une adresse mail</mat-error>
           <mat-error *ngIf="form.get('email')?.hasError('email')">Merci de saisir une adresse mail au format: patrice@example.com </mat-error>
         </mat-form-field>

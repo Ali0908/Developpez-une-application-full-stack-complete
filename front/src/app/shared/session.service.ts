@@ -18,16 +18,17 @@ export class SessionService {
   public logIn(user: SessionInformation): void {
     this.sessionInformation = user;
     this.isLogged = true;
-    this.next();
+    localStorage.setItem('sessionInformation', JSON.stringify(user));
+    // this.next();
   }
 
   public logOut(): void {
     this.sessionInformation = undefined;
     this.isLogged = false;
-    this.next();
+    // this.next();
   }
 
-  private next(): void {
-    this.isLoggedSubject.next(this.isLogged);
-  }
+  // private next(): void {
+  //   this.isLoggedSubject.next(this.isLogged);
+  // }
 }

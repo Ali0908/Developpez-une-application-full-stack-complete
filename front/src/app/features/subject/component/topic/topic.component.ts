@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import {Observable} from "rxjs";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Observable, Subscription, window} from "rxjs";
 import {Topic} from "../../../../core/models/topic";
 import {TopicService} from "../../service/topic.service";
 import {SharedService} from "../../../../shared/shared.service";
 import {SubscriptionTopic} from "../../../../core/models/subscription-topic";
 import {SessionService} from "../../../../shared/session.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-topic',
   templateUrl: './topic.component.html',
   styleUrls: ['./topic.component.scss']
 })
-export class TopicComponent implements OnInit {
+export class TopicComponent implements OnInit, OnDestroy {
   public topics$: Observable<Topic[]> = this.topicSrv.getAll();
   userId!: number;
+  private topicSubscription!: Subscription;
   constructor( private topicSrv: TopicService,
-               private sharedSrv: SharedService,
-               private sessionService: SessionService) {
-    this.sharedSrv.setUserConnected(true);
-    this.sharedSrv.setShowButtons(true);
+               private sessionService: SessionService,
+               private matSnackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -31,14 +31,18 @@ export class TopicComponent implements OnInit {
       topicId,
       userId: this.userId
     }
-    this.topicSrv.subscribeToTopic(subscribeObject).subscribe({
+    this.topicSubscription = this.topicSrv.subscribeToTopic(subscribeObject).subscribe({
       next: (message: string) => {
-        window.alert(message);
+        this.matSnackBar.open(message, 'Fermer', { duration: 2000 });
       },
       error: () => {
-        window.alert('Erreur lors de l\'abonnement');
+        this.matSnackBar.open('Erreur lors de l\'abonnement', 'Fermer', { duration: 2000 });
       },
     });
 
+  }
+
+  ngOnDestroy(): void {
+    this.topicSubscription?.unsubscribe();
   }
 }

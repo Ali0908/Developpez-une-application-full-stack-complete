@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SharedService} from "../../shared/shared.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../auth/service/auth.service";
-import {Observable} from "rxjs";
+import {Observable, Subscription, window} from "rxjs";
 import {User} from "../../core/models/user";
 import {Router} from "@angular/router";
 import {Topic} from "../../core/models/topic";
 import {TopicService} from "../subject/service/topic.service";
 import {SessionService} from "../../shared/session.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss']
 })
-export class AccountComponent implements OnInit {
+export class AccountComponent implements OnInit, OnDestroy {
   public form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     username: ['', [Validators.required]],
@@ -25,50 +26,63 @@ export class AccountComponent implements OnInit {
   username!: string;
   email!: string;
   topicsSubscribed$!: Observable<Topic[]>;
+  private updateMeSubscription!: Subscription;
+  private unsubscribeTopicSubscription!: Subscription;
 
   constructor(private fb: FormBuilder,
               private authSrv: AuthService,
               private router: Router,
-              private sharedSrv: SharedService,
               private topicSrv: TopicService,
-              private sessionService: SessionService) {
-    this.sharedSrv.setUserConnected(true);
-    this.sharedSrv.setShowButtons(true);
+              private sessionService: SessionService,
+              private matSnackBar: MatSnackBar) {
   }
   ngOnInit(): void {
-    this.userId = this.sessionService?.sessionInformation?.userId as number;
-    this.topicsSubscribed$ = this.topicSrv.getAllTopicsSubscribedByUserId(this.userId);
+    const savedSession = localStorage.getItem('sessionInformation');
+    if (savedSession) {
+      this.sessionService.sessionInformation = JSON.parse(savedSession);
+      this.userId = this.sessionService?.sessionInformation?.userId as number;
+      this.username = this.sessionService?.sessionInformation?.username as string;
+      this.email = this.sessionService?.sessionInformation?.email as string;
+      this.topicsSubscribed$ = this.topicSrv.getAllTopicsSubscribedByUserId(this.userId);
+    }
   }
 
   submit() {
     const modifiedUser = this.form.value as User;
-    this.authSrv.updateMe(modifiedUser).subscribe({
+    this.updateMeSubscription= this.authSrv.updateMe(modifiedUser).subscribe({
       next: () => {
-        window.alert('Compte mis à jour');
+        this.matSnackBar.open('Compte mis à jour', 'Fermer', { duration: 2000 });
       },
       error: () => {
-        window.alert('Erreur lors de la mise à jour');
+        this.matSnackBar.open('Erreur lors de la mise à jour', 'Fermer', { duration: 2000 });
       },
     });
   }
 
   logout() {
     this.authSrv.logout();
-    window.alert('Déconnexion réussie');
+    this.sessionService.logOut();
+    this.matSnackBar.open('Déconnexion réussie', 'Fermer', { duration: 2000 });
     localStorage.removeItem('token');
-    localStorage.removeItem('userConnected');
+    localStorage.removeItem('sessionInformation');
+    localStorage.removeItem('selectedPost');
     this.router.navigate(['']);
   }
 
   unsubscribe(topicId: number) {
-    this.topicSrv.unsubscribeToTopic({userId: this.userId, topicId: topicId}).subscribe({
+    this.unsubscribeTopicSubscription =  this.topicSrv.unsubscribeToTopic({userId: this.userId, topicId: topicId}).subscribe({
       next: () => {
-        window.alert('Désabonnement réussi');
+        this.matSnackBar.open('Désabonnement réussi', 'Fermer', { duration: 2000 });
         location.reload();
       },
       error: () => {
-        window.alert('Erreur lors du désabonnement');
+        this.matSnackBar.open('Erreur lors du désabonnement', 'Fermer', { duration: 2000 });
       }
     });
     }
+
+  ngOnDestroy(): void {
+    this.updateMeSubscription?.unsubscribe();
+    this.unsubscribeTopicSubscription?.unsubscribe();
+  }
 }

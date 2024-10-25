@@ -23,6 +23,7 @@ import {ButtonModule} from "primeng/button";
 import { HeaderComponent } from './features/header/header.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {NgOptimizedImage} from "@angular/common";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 
@@ -46,6 +47,7 @@ import {NgOptimizedImage} from "@angular/common";
     MatExpansionModule,
     MatSidenavModule,
     MatListModule,
+    MatSnackBarModule,
     SidebarModule,
     ButtonModule,
     MatDialogModule,

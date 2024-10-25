@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Observable} from "rxjs";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Observable, Subscription, window} from "rxjs";
 import {Topic} from "../../../../core/models/topic";
 import {TopicService} from "../../service/topic.service";
 import {FormBuilder, Validators} from "@angular/forms";
@@ -8,13 +8,14 @@ import {SharedService} from "../../../../shared/shared.service";
 import {PostService} from "../../service/post.service";
 import {Router} from "@angular/router";
 import {SessionService} from "../../../../shared/session.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
-export class PostComponent implements OnInit {
+export class PostComponent implements OnInit, OnDestroy {
   public topics$: Observable<Topic[]> = this.topicSrv.getAll();
   form = this.fb.group({
     topic: ['', [Validators.required]],
@@ -22,16 +23,15 @@ export class PostComponent implements OnInit {
     postContent: ['', [Validators.required]]
   });
   userId!: number;
+  private postSubscription!: Subscription;
 
   constructor( private topicSrv: TopicService,
                private fb: FormBuilder,
-               private sharedSrv: SharedService,
                private postSrv: PostService,
                private router: Router,
-               private sessionService: SessionService
+               private sessionService: SessionService,
+               private matSnackBar: MatSnackBar,
   ) {
-    this.sharedSrv.setUserConnected(true);
-    this.sharedSrv.setShowButtons(true);
   }
 
   ngOnInit(): void {
@@ -47,14 +47,18 @@ export class PostComponent implements OnInit {
       authorId: this.userId,
       content: this.form.value.postContent!,
     }
-          this.postSrv.create(postRequest).subscribe({
+    this.postSubscription = this.postSrv.create(postRequest).subscribe({
       next: (message: string) => {
-        window.alert(message);
+        this.matSnackBar.open(message, 'Fermer', { duration: 2000 });
         this.router.navigate(['/feed']);
       },
       error: () => {
-        window.alert('Post non créé');
+        this.matSnackBar.open('Post non créé', 'Fermer', { duration: 2000 });
       }
     });
     }
+
+  ngOnDestroy(): void {
+    this.postSubscription?.unsubscribe();
+  }
 }
