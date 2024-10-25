@@ -85,6 +85,10 @@ export class AccountComponent implements OnInit, OnDestroy {
     });
     }
 
+  isAnyFieldValid(): boolean {
+    return Object.values(this.form.controls).some(control => control.valid);
+  }
+
   ngOnDestroy(): void {
     this.updateMeSubscription?.unsubscribe();
     this.unsubscribeTopicSubscription?.unsubscribe();

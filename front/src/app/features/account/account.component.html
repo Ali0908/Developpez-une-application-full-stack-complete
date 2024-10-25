@@ -25,7 +25,7 @@
             Merci de saisir  un mot de passe  contenant au moins 8 caractères, une majuscule, une minuscule et un caractère spécial</mat-error>
         </mat-form-field>
       </mat-card-content>
-      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Sauvegarder</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!isAnyFieldValid()">Sauvegarder</button>
     </form>
   </mat-card>
   <button mat-button color="warn" (click)="logout()">Se déconnecter</button>
