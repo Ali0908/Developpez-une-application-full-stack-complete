@@ -3,4 +3,50 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 3%;
+}
+
+.account-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.account-mat-card-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.account-topic-container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 5%;
+}
+.account-my-topics{
+  background-color: #f8f9fa;
+}
+.account-subscribe-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.account-parent-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media(max-width: 500px){
+  .account-topic-container{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .account{
+    margin-top: 10%;
+  }
+
 }

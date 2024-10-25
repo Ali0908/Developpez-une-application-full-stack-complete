@@ -1,26 +1,23 @@
 <div class="account">
-  <mat-card>
-    <a routerLink='' target="_blank">
-      <mat-icon aria-hidden="false" aria-label="Arrow Back" fontIcon="arrow_back"></mat-icon>
-    </a>
+  <mat-card class="account-card">
     <mat-card-header>
       <mat-card-title>Profil utilisateur</mat-card-title>
     </mat-card-header>
-    <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
-      <mat-card-content>
-        <h3>Username</h3>
+    <form class="account-form" [formGroup]="form" (ngSubmit)="submit()">
+      <mat-card-content class="account-mat-card-content">
         <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
           <input matInput [placeholder]="username" formControlName="username">
           <mat-error *ngIf="form.get('username')?.hasError('required')">Merci de saisir un nom d'utilisateur</mat-error>
         </mat-form-field>
-        <h3>Email</h3>
         <mat-form-field appearance="outline">
+          <mat-label>email@email.fr</mat-label>
           <input matInput [placeholder]="email" formControlName="email">
           <mat-error *ngIf="form.get('email')?.hasError('required')">Merci de saisir une adresse mail</mat-error>
           <mat-error *ngIf="form.get('email')?.hasError('email')">Merci de saisir une adresse mail au format: patrice@example.com </mat-error>
         </mat-form-field>
-        <h3>Password</h3>
         <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
           <input matInput  formControlName="password">
           <mat-error *ngIf="form.get('password')?.hasError('required')">Merci de saisir un mot de passe</mat-error>
           <mat-error class="error-length" *ngIf="form.get('password')?.hasError('minlength') ||
@@ -34,12 +31,17 @@
   <button mat-button color="warn" (click)="logout()">Se déconnecter</button>
 </div>
 <hr>
-  <mat-card *ngFor=" let topic of topicsSubscribed$ | async" class="card">
-    <mat-card-title>{{topic.name}}</mat-card-title>
-    <mat-card-content>
-      <p>{{topic.description}}</p>
-    </mat-card-content>
-    <mat-card-actions class="subscribe-btn">
-      <button mat-raised-button color="primary" (click)="unsubscribe(topic.id)">Se désabonner</button>
-    </mat-card-actions>
-  </mat-card>
+<div class="account-parent-container">
+  <h2>Abonnement</h2>
+  <div class="account-topic-container">
+    <mat-card *ngFor=" let topic of topicsSubscribed$ | async" class="account-my-topics">
+      <mat-card-title>{{topic.name}}</mat-card-title>
+      <mat-card-content>
+        <p>{{topic.description}}</p>
+      </mat-card-content>
+      <mat-card-actions class="account-subscribe-btn">
+        <button mat-raised-button color="primary" (click)="unsubscribe(topic.id)">Se désabonner</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

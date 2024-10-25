@@ -6,9 +6,78 @@
 
 .comment{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+
+}
+.comment-data{
+  display: flex;
 }
 .comment-content{
-  background-color: #EEEEEE;;
-  border-radius: 3px;
+  background-color: #EEEEEE;
+  border-radius: 15px;
+  margin-left: 30%;
+  width: 80%;
+  padding: 1%;
+}
+.detail-post-container{
+  width: 70%;
+}
+.detail-post-under-content{
+  margin-left: 30%;
+}
+
+.iconClass{
+  color: #7763C5;
+}
+.authorUsername{
+  margin-left: 3%;
+  width: 20%;
+}
+.input-field{
+  width: 70%;
+}
+
+.detail-post-title{
+  display: flex;
+  align-items: center;
+}
+.post-title{
+  margin-left: 3%;
+}
+.icon-style{
+  color: black;
+}
+
+@media (max-width: 500px) {
+  .card-container{
+    margin-bottom: 10%;
+  }
+  .comment-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .comment-data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+
+  .comment {
+    display: flex;
+    align-items: stretch; /* Assure que chaque enfant occupe toute la largeur */
+    //gap: 10px; /* Espacement entre le bouton et l'input */
+  }
+
+  .input-field {
+    width: 100%; /* Prend toute la largeur du parent */
+  }
+
+  .send-button {
+    z-index: 1;
+  }
+
 }

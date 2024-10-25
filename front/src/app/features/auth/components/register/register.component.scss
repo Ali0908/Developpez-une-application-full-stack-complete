@@ -1,6 +1,9 @@
 .register {
+  marign-top: 10%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .error{
   color: red;
@@ -15,7 +18,8 @@
 
 .submit-container {
   display: flex;
-  justify-content: center; /* Centre le bouton horizontalement */
+  justify-content: center;
+  align-items: center;/* Centre le bouton horizontalement */
   margin-top: 16px;
   text-align: center/* Ajoute de l'espace au-dessus du bouton */
 }

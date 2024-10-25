@@ -5,3 +5,39 @@
   flex-direction: column;
   margin-top: 1%;
 }
+.post-header{
+  width: 100%;
+}
+.post-title{
+  margin-left: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-arrow-back{
+  color: black;
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+}
+
+@media(max-width: 500px) {
+
+  .post-header{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .post-title{
+    margin-left: 3%;
+  }
+  .post-arrow-back{
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    width: 100%;
+  }
+}

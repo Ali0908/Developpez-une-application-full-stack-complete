@@ -1,9 +1,12 @@
 <div>
   <form class="post" [formGroup]="form" (ngSubmit)="submit()">
-    <a routerLink='/feed' target="_blank">
-      <mat-icon aria-hidden="false" aria-label="Arrow Back" fontIcon="arrow_back"></mat-icon>
-    </a>
-    <h2>Créer un nouvel article</h2>
+
+    <div class="post-header">
+      <a routerLink='/feed' target="_blank" class="post-arrow-back">
+        <mat-icon aria-hidden="false" aria-label="Arrow Back" fontIcon="arrow_back"></mat-icon>
+      </a>
+      <h2 class="post-title">Créer un nouvel article</h2>
+    </div>
     <mat-form-field appearance="outline">
       <mat-label>Sélectionner un thème</mat-label>
       <mat-select formControlName="topic">
