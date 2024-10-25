@@ -28,6 +28,7 @@ export class AccountComponent implements OnInit, OnDestroy {
   topicsSubscribed$!: Observable<Topic[]>;
   private updateMeSubscription!: Subscription;
   private unsubscribeTopicSubscription!: Subscription;
+  hide = true;
 
   constructor(private fb: FormBuilder,
               private authSrv: AuthService,
