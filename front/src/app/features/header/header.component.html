@@ -19,7 +19,7 @@
 <div class="mobile-header" *ngIf="isMobile">
   <ng-container *ngIf="showHeaderMobileContent">
 <!--    </div>-->
-    <mat-drawer-container class="example-container" autosize>
+    <mat-drawer-container id="drawer-container">
       <div class="header-sidenav">
       <div class="header-logo">
         <a mat-button routerLink=''>
@@ -33,9 +33,13 @@
       </div>
       </div>
       <mat-drawer #drawer class="sidenav" mode="side" position="end">
+        <div class="drawer-top">
         <a mat-button routerLink="feed" class="article-link">Articles</a>
         <a mat-button routerLink="topics" class="theme-link">Thèmes</a>
-        <a mat-button routerLink="account" class="account-link"><mat-icon aria-hidden="false" aria-label="User Account" fontIcon="account_circle"></mat-icon></a>
+        </div>
+        <div class="drawer-down">
+          <a mat-button routerLink="account" class="account-link"><mat-icon aria-hidden="false" aria-label="User Account" fontIcon="account_circle"></mat-icon></a>
+        </div>
       </mat-drawer>
     </mat-drawer-container>
 

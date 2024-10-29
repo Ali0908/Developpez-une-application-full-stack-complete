@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {SharedService} from "../../../../shared/shared.service";
 import {CommentService} from "../../service/comment.service";
 import {map} from "rxjs/operators";
@@ -30,7 +30,8 @@ export class DetailPostComponent implements OnInit, OnDestroy {
               private commentSrv: CommentService,
               private fb: FormBuilder,
               private sessionService: SessionService,
-              private matSnackBar: MatSnackBar) {
+              private matSnackBar: MatSnackBar,
+              private cd: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {

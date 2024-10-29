@@ -46,9 +46,27 @@
 .header-sidenav{
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
-.sidenav{
+.mobile-header{
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-top{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.drawer-bottom{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.mat-drawer-content{
   display: flex;
   flex-direction: column;
 }
