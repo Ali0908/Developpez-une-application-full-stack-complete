@@ -1,12 +1,11 @@
-import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {Event, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {AuthService} from "../../service/auth.service";
 import {RegisterRequest} from "../../../../core/models/register-request";
 import {AuthSuccess} from "../../../../core/models/auth-success";
-import {SharedService} from "../../../../shared/shared.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {Subscription, window} from "rxjs";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-register',

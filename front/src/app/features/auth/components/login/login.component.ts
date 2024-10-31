@@ -1,13 +1,12 @@
-import {ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../../service/auth.service";
-import {Event, Router} from "@angular/router";
+import { Router} from "@angular/router";
 import {AuthSuccess} from "../../../../core/models/auth-success";
 import {LoginRequest} from "../../../../core/models/login-request";
-import {SharedService} from "../../../../shared/shared.service";
 import {SessionInformation} from "../../../../core/models/session-information";
 import {SessionService} from "../../../../shared/session.service";
-import {Subscription, window} from "rxjs";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-login',

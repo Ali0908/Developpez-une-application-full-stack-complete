@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable, Subscription, window} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {Topic} from "../../../../core/models/topic";
 import {TopicService} from "../../service/topic.service";
 import {FormBuilder, Validators} from "@angular/forms";

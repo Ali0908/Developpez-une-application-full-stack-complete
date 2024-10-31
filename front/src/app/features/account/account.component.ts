@@ -1,8 +1,7 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import {SharedService} from "../../shared/shared.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../auth/service/auth.service";
-import {Observable, Subscription, window} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {User} from "../../core/models/user";
 import {Router} from "@angular/router";
 import {Topic} from "../../core/models/topic";

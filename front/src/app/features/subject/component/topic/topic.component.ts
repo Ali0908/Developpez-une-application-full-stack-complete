@@ -1,12 +1,10 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import {combineLatest, Observable, Subscription, window} from "rxjs";
+import {combineLatest, Observable, Subscription} from "rxjs";
 import {Topic} from "../../../../core/models/topic";
 import {TopicService} from "../../service/topic.service";
-import {SharedService} from "../../../../shared/shared.service";
 import {SubscriptionTopic} from "../../../../core/models/subscription-topic";
 import {SessionService} from "../../../../shared/session.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-topic',

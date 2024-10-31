@@ -1,8 +1,8 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SharedService} from "../../../../shared/shared.service";
 import {CommentService} from "../../service/comment.service";
 import {map} from "rxjs/operators";
-import {Observable, Subscription, window} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {Comment} from "../../../../core/models/comment";
 import {FormBuilder, Validators} from "@angular/forms";
 import {CommentRequest} from "../../../../core/models/comment-request";
@@ -30,8 +30,7 @@ export class DetailPostComponent implements OnInit, OnDestroy {
               private commentSrv: CommentService,
               private fb: FormBuilder,
               private sessionService: SessionService,
-              private matSnackBar: MatSnackBar,
-              private cd: ChangeDetectorRef) {
+              private matSnackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {

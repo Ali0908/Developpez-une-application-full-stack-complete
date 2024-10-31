@@ -1,6 +1,5 @@
-import {Component, ElementRef, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-header',
@@ -30,9 +29,6 @@ export class HeaderComponent implements OnInit {
     this.isMobile = window.innerWidth <= 500;
   }
 
-
-  toggleHeader() {
-    this.openAccordion = !this.openAccordion; }
 
   ngOnInit() {
     this.checkScreenSize();
@@ -81,9 +77,5 @@ export class HeaderComponent implements OnInit {
         }
       }
     });
-  }
-
-  closeAccordion() {
-    this.openAccordion = false;
   }
 }

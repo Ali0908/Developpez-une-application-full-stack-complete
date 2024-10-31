@@ -1,8 +1,5 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {SessionService} from "./shared/session.service";
-import {Observable} from "rxjs";
-import {AuthService} from "./features/auth/service/auth.service";
-import {Router} from "@angular/router";
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -10,14 +7,4 @@ import {Router} from "@angular/router";
   styleUrls: ['./app.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
-  hideHeader = true;
-
-  constructor(private sessionService: SessionService, private authService: AuthService, private router: Router) {
-  }
-
-  ngOnInit(): void {
-  }
-
-
-}
+export class AppComponent{}
