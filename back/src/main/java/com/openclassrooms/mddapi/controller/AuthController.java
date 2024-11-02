@@ -6,7 +6,6 @@ import com.openclassrooms.mddapi.dto.response.AuthDtoResponse;
 import com.openclassrooms.mddapi.dto.response.LoginDtoRequest;
 import com.openclassrooms.mddapi.dto.response.UserDtoResponse;
 import com.openclassrooms.mddapi.exceptions.BadRequestException;
-import com.openclassrooms.mddapi.exceptions.UnauthorizedRequestException;
 import com.openclassrooms.mddapi.service.interfaces.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,21 +28,15 @@ public class AuthController {
     private final AuthService authSrv;
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public Optional<AuthDtoResponse> register(@RequestBody @Validated RegisterDtoRequest request, BindingResult result) {
-        if (result.hasErrors()) {
-            String errorMessage = result.getAllErrors().stream()
-                    .map(ObjectError::getDefaultMessage)
-                    .collect(Collectors.joining(", "));
-            throw new BadRequestException(errorMessage);
-        }
+    public Optional<AuthDtoResponse> register(@RequestBody @Validated RegisterDtoRequest request) {
         return authSrv.register(request);
     }
 
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.CREATED)
     public Optional<AuthDtoResponse> login(
-            @RequestBody @Validated LoginDtoRequest loginRequest, BindingResult result
-    ) {
+            @RequestBody @Validated LoginDtoRequest loginRequest, BindingResult result) {
+
         return authSrv.login(loginRequest);
     }
 
