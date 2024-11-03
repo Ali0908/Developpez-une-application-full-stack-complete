@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~src/styles/variables";
 html, body { height: 100%; }
-body { margin: 0; font-family: Inter;
+body { margin: 0;
+  font-family: Inter, serif;
 ; }
 
 /* Media query pour les écrans de taille <= 500px */
@@ -53,6 +54,6 @@ body { margin: 0; font-family: Inter;
   position: static !important;
   width: 100%// ou 'absolute' si nécessaire
 }
-.changeTextColor{
+.change-text-color{
   color: $purple-color !important;
 }

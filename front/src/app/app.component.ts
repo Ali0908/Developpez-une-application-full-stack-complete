@@ -17,7 +17,8 @@ import {filter} from "rxjs";
 export class AppComponent implements OnInit{
   public showMenu: boolean = false;
   public showHeaderLinks: boolean = false;
-  public changeColorLink: boolean = false;
+  public onPostFeedPage: boolean = false;
+  public onTopicPage: boolean = false;
   @ViewChild('sidenav') sidenav!: MatSidenav;
   private navEvent!: NavigationEnd;
 
@@ -47,19 +48,34 @@ export class AppComponent implements OnInit{
     if (url === '/') {
       this.showMenu = false;
       this.showHeaderLinks = false;
-      this.changeColorLink = false;
+      this.onPostFeedPage = false;
+      this.onTopicPage = false;
     } else if ((url === '/login' || url === '/register') && !isMobileScreen) {
       this.showMenu = true;
       this.showHeaderLinks = false;
-      this.changeColorLink = true;
+      this.onPostFeedPage = false;
+      this.onTopicPage = false;
     } else if ((url === '/login' || url === '/register') && isMobileScreen) {
       this.showMenu = false;
       this.showHeaderLinks = false;
-      this.changeColorLink = false;
-    } else {
+      this.onPostFeedPage = false;
+      this.onTopicPage = false;
+    } else if ((url === '/posts/feed')  && !isMobileScreen) {
+      this.onPostFeedPage = true;
+      this.onTopicPage = false;
       this.showMenu = true;
       this.showHeaderLinks = true;
-      this.changeColorLink = false;
+    } else if ((url === '/topics')  && !isMobileScreen) {
+      this.onPostFeedPage = false;
+      this.onTopicPage = true;
+      this.showMenu = true;
+      this.showHeaderLinks = true;
+    }
+    else {
+      this.showMenu = true;
+      this.showHeaderLinks = true;
+      this.onPostFeedPage = false;
+      this.onTopicPage = false;
     }
     this.cd.detectChanges();
   }

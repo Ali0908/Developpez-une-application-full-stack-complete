@@ -15,10 +15,10 @@
     <mat-icon>menu</mat-icon>
   </button>
   <ng-container *ngIf="showHeaderLinks">
-  <!-- Horizontal Menu (Desktop) -->
+  <!-- Horizontal Menu (Desktop)   [ngStyle]="{ changeColorLink: color}" -->
   <nav class="desktop-menu">
-    <a mat-button="mat-button" routerLink="/posts/feed" routerLinkActive="active" [ngClass]="{'changeTextColor': changeColorLink}">Articles</a>
-    <a mat-button="mat-button" routerLink="/topics" routerLinkActive="active">Thèmes</a>
+    <a mat-button="mat-button" routerLink="/posts/feed" routerLinkActive="active" [ngClass]="{ 'change-text-color': onPostFeedPage}">Articles</a>
+    <a mat-button="mat-button" routerLink="/topics" routerLinkActive="active" [ngClass]="{ 'change-text-color': onTopicPage}">Thèmes</a>
     <a mat-button="mat-button" routerLink="account">
       <img src="assets/user.png" alt="logo" id="user-account"/>
     </a>
