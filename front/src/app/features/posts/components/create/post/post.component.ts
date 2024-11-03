@@ -4,7 +4,7 @@ import {Topic} from "../../../../../core/models/topic";
 import {TopicService} from "../../../../subjects/service/topic.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {Post} from "../../../../../core/models/post";
-import {PostService} from "../../../../subjects/service/post.service";
+import {PostService} from "../../../services/post.service";
 import {Router} from "@angular/router";
 import {SessionService} from "../../../../../shared/session.service";
 import {MatSnackBar} from "@angular/material/snack-bar";

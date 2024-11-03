@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SharedService} from "../../../../shared/shared.service";
-import {CommentService} from "../../../subjects/service/comment.service";
+import {CommentService} from "../../services/comment.service";
 import {map} from "rxjs/operators";
 import {Observable, Subscription} from "rxjs";
 import {Comment} from "../../../../core/models/comment";

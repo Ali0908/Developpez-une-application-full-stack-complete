@@ -10,8 +10,10 @@
     </div>
   <mat-card-content>
     <div class="row">
+      <div class="post-header-data">
       <p>{{post.date | date: 'dd-MM-yyyy' }}</p>
       <p>{{post.topicTitle}}</p>
+      </div>
       <p>{{post.authorUsername}}</p>
     </div>
     <p>{{post.content}}</p>
@@ -31,7 +33,7 @@
       <mat-error *ngIf="form.get('comment')?.hasError('required')">Merci de saisir un contenu pour votre commentaire</mat-error>
     </mat-form-field>
     <button mat-flat-button type="submit" class="send-button">
-      <mat-icon aria-hidden="false" aria-label="Send" fontIcon="send" class="iconClass"></mat-icon>
+      <img src="assets/icon_send.png" alt="Icon send" class="icon-send">
     </button>
   </form>
 </div>

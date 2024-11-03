@@ -56,27 +56,38 @@
   box-shadow: none!important;
 }
 
-@media (max-width: 500px) {
+.icon-send{
+  width: 2em;
+}
+
+@media (max-width: 800px) {
+
+  .detail-post-container{
+    width: 100%;
+  }
+  .detail-post-under-content{
+    margin: 0;
+  }
   .card-container{
     margin-bottom: 10%;
   }
   .comment-container{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: column;
   }
   .comment-data{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-end;
     flex-direction: column-reverse;
   }
 
   .comment {
     display: flex;
     align-items: stretch; /* Assure que chaque enfant occupe toute la largeur */
-    //gap: 10px; /* Espacement entre le bouton et l'input */
+    width: 100%;
   }
 
   .input-field {
@@ -87,4 +98,18 @@
     z-index: 1;
   }
 
-}
+  .comment-content{
+    background-color: #ffffff;
+  }
+  .post-header-data{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+
+  .row{
+    display: flex;
+    flex-direction: column;
+  }
+
+  }

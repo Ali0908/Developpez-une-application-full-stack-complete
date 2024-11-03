@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import {SharedService} from "../../../../shared/shared.service";
 import {Feed} from "../../../../core/models/feed";
 import {Observable} from "rxjs";
-import {PostService} from "../../../subjects/service/post.service";
+import {PostService} from "../../services/post.service";
 import {Router} from "@angular/router";
 import {map} from "rxjs/operators";
 import {SessionService} from "../../../../shared/session.service";
