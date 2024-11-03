@@ -5,19 +5,27 @@ body { margin: 0; font-family: Inter;
 ; }
 
 /* Media query pour les écrans de taille <= 500px */
-@media (max-width: 500px) {
+@media (max-width: 800px) {
   .logo {
     display: block;
     width: 30em; /* Ajuste la taille selon tes besoins */
     margin-bottom: 10%;
   }
 
+  .logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
   .logo-header{
-    position: absolute;
-    right: 27%;
-    margin-top: 1%;
-    width: 200px;
-    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 20em;
   }
 }
 

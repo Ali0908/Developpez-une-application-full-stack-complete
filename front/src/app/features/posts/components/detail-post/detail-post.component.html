@@ -3,7 +3,7 @@
 <div *ngIf="post$ | async as post">
 <mat-card class="card-container">
     <div class="detail-post-title">
-      <a routerLink='/feed' target="_blank">
+      <a routerLink='/posts/feed'>
         <mat-icon aria-hidden="false" aria-label="Arrow Back" fontIcon="arrow_back" class="icon-style"></mat-icon>
       </a>
       <mat-card-title class="post-title">{{post.title}} </mat-card-title>

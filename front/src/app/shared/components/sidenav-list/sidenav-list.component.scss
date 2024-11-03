@@ -1,0 +1,21 @@
+.mat-nav-list {
+  padding-top: 3rem;
+  .mat-list-item {
+    display: flex;
+    justify-content: flex-end;
+    /* Aligne le contenu de chaque item à droite */
+    align-items: center;
+    /* Centre verticalement */
+    text-align: right;
+    /* Alignement du texte à droite */
+  }
+}
+
+#user-profile-btn {
+  position: absolute;
+  /* Positionnement absolu */
+  bottom: 16px;
+  /* Espacement du bas */
+  right: 0px;
+  /* Espacement de la droite */
+}

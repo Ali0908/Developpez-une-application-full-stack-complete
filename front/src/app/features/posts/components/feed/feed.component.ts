@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import {SharedService} from "../../../../shared/shared.service";
 import {Feed} from "../../../../core/models/feed";
 import {Observable} from "rxjs";
-import {PostService} from "../../service/post.service";
+import {PostService} from "../../../subjects/service/post.service";
 import {Router} from "@angular/router";
 import {map} from "rxjs/operators";
 import {SessionService} from "../../../../shared/session.service";
@@ -35,13 +35,13 @@ export class FeedComponent implements OnInit {
   }
 
   navigateToCreatePost() {
-    this.router.navigate(['/post']);
+    this.router.navigate(['/posts/create']);
   }
 
   navigateToDetailPost(post: Feed) {
     this.sharedSrv.getDetailPost(post);
     localStorage.setItem('selectedPost', JSON.stringify(post)); // Enregistre le post sélectionné dans localStorage
-    this.router.navigate(['/detail-post/' + post.id]);
+    this.router.navigate(['/posts', post.id]);
   }
 
   toggleSort() {

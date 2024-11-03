@@ -1,0 +1,30 @@
+<!-- Header with Toolbar -->
+<mat-toolbar color="primary" class="header-toolbar">
+
+  <div class="header-logo">
+    <a mat-button="mat-button" routerLink=''>
+      <img src="assets/logo_p6.png" alt="logo" class="image"/>
+    </a>
+  </div>
+
+  <!-- Burger menu button in the top-right corner -->
+  <button
+    mat-icon-button="mat-icon-button"
+    (click)="sidenav.toggle()"
+    class="menu-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <ng-container *ngIf="showHeaderLinks">
+  <!-- Horizontal Menu (Desktop) -->
+  <nav class="desktop-menu">
+    <a mat-button="mat-button" routerLink="/posts/feed" routerLinkActive="active">Articles</a>
+    <a mat-button="mat-button" routerLink="/topics" routerLinkActive="active">Thèmes</a>
+    <a mat-button="mat-button" routerLink="account">
+      <img src="assets/user.png" alt="logo" id="user-account"/>
+    </a>
+  </nav>
+  </ng-container>
+</mat-toolbar>
+
+<div class="navbar-line"></div>
+<!-- Ligne ajoutée ici -->

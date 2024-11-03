@@ -1,7 +1,9 @@
 <a routerLink=''>
   <mat-icon aria-hidden="false" aria-label="Arrow Back" fontIcon="arrow_back"  class="arrow"></mat-icon>
 </a>
-<img src="assets/logo_p6.png" alt="logo" class="logo-header" *ngIf="showLogo" />
+<div class="logo-container" *ngIf="showLogo">
+  <img src="assets/logo_p6.png" alt="logo" class="logo-header"/>
+</div>
 <div class="register">
   <div>
     <span class="auth-header">Inscription</span>

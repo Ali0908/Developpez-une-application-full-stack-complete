@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../../service/auth.service";
 import { Router} from "@angular/router";
@@ -16,25 +16,35 @@ import {Subscription} from "rxjs";
 export class LoginComponent implements OnInit, OnDestroy {
   public hide = true;
   public onError = false;
-  public hideHeader = false;
 
   public form = this.fb.group({
     identifier: ['', [Validators.required]],
     password: ['', [Validators.required]]
   });
-  showLogo = false;
+  public showLogo = false;
   private loginSubscription!: Subscription;
 
   constructor(private authService: AuthService,
               private fb: FormBuilder,
               private router: Router,
-              private sessionService: SessionService
+              private sessionService: SessionService,
+              private cd: ChangeDetectorRef
               ) {
   }
 
   ngOnInit() {
+    this.checkScreenSize();
+  }
+  // Listen for window resize events
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    this.checkScreenSize();
   }
 
+  private checkScreenSize(): void {
+    this.showLogo = window.innerWidth < 800;
+    this.cd.detectChanges();
+  }
 
   public submit(): void {
     const loginRequest = this.form.value as LoginRequest;
@@ -44,7 +54,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.authService.me().subscribe({
           next: (user: SessionInformation) => {
             this.sessionService.logIn(user);
-            this.router.navigate(['/feed']);
+            this.router.navigate(['/posts/feed']);
           }
         });
         error: () => this.onError = true

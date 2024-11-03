@@ -10,7 +10,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
-import {SubjectRoutingModule} from "../subject/subject-routing.module";
+import {SubjectRoutingModule} from "../subjects/subject-routing.module";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 const materialModules = [

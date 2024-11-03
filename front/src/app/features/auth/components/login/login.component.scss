@@ -35,9 +35,9 @@ mat-card-actions {
   justify-content: center; /* Centre le bouton dans les actions */
 }
 
-@media (max-width: 500px) {
+@media (max-width: 800px) {
   .login {
-    margin-top: 40%;
+    margin-top: 2%;
     display: flex;
     flex-direction: column;
     justify-content: center;

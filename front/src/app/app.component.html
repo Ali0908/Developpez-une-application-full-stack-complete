@@ -1,4 +1,23 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<!-- app.component.html -->
+<mat-sidenav-container class="sidenav-container">
+  <!-- Side Navigation Menu (Mobile) -->
+  <mat-sidenav *ngIf="showMenu" #sidenav mode="over" position="end" class="sidenav" [opened]="false">
+    <app-sidenav-list [sidenav]="sidenav"></app-sidenav-list>
+  </mat-sidenav>
+
+  <!-- Main Content -->
+  <mat-sidenav-content>
+    <app-navbar
+      *ngIf="showMenu"
+      [sidenav]="sidenav"
+      [showHeaderLinks]="showHeaderLinks">
+    </app-navbar>
+
+    <!-- Main content area for routing -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
 

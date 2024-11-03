@@ -10,8 +10,7 @@ import {MatCardModule} from "@angular/material/card";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
-import {JwtInterceptor} from "./interceptor/jwt.interceptor";
-import { AccountComponent } from './features/account/account.component';
+import {JwtInterceptor} from "./core/interceptor/jwt.interceptor";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -20,16 +19,17 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {SidebarModule} from "primeng/sidebar";
 import {ButtonModule} from "primeng/button";
-import { HeaderComponent } from './features/header/header.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {NgOptimizedImage} from "@angular/common";
-import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import { MatSnackBarModule} from "@angular/material/snack-bar";
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { SidenavListComponent } from './shared/components/sidenav-list/sidenav-list.component';
 
 
 
 
 @NgModule({
-  declarations: [AppComponent, AccountComponent, HeaderComponent],
+  declarations: [AppComponent, NavbarComponent, SidenavListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -57,8 +57,6 @@ import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
   ],
   bootstrap: [AppComponent],
-  exports: [
-    HeaderComponent
-  ]
+  exports: []
 })
 export class AppModule {}

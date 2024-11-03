@@ -1,12 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
-import {Topic} from "../../../../core/models/topic";
-import {TopicService} from "../../service/topic.service";
+import {Topic} from "../../../../../core/models/topic";
+import {TopicService} from "../../../../subjects/service/topic.service";
 import {FormBuilder, Validators} from "@angular/forms";
-import {Post} from "../../../../core/models/post";
-import {PostService} from "../../service/post.service";
+import {Post} from "../../../../../core/models/post";
+import {PostService} from "../../../../subjects/service/post.service";
 import {Router} from "@angular/router";
-import {SessionService} from "../../../../shared/session.service";
+import {SessionService} from "../../../../../shared/session.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({

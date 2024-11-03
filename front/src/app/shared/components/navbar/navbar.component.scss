@@ -1,0 +1,76 @@
+/* Header toolbar styling */
+.header-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Couleur de fond claire */
+  background-color: white;
+  /* Couleur du texte */
+  color: #000;
+  border-bottom: 1px solid #000; /* Bottom border */;
+}
+
+#user-account {
+  width: 2em;
+  margin-bottom: 10px;
+}
+
+/* Desktop menu styling */
+.desktop-menu a {
+  color: black;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.header-logo {
+  display: flex;
+  /* Utiliser flexbox pour centrer le logo */
+  align-items: center;
+  /* Centrer verticalement */
+}
+
+.image {
+  height: 40px;
+  /* Hauteur pour mobile */
+  width: auto;
+  /* Largeur automatique pour conserver le ratio */
+}
+
+@media (min-width: 600px) {
+  .image {
+    height: 60px;
+    /* Hauteur pour desktop */
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  /* Show burger menu button in mobile, aligned to the right */
+  .menu-button {
+    display: inline;
+  }
+
+  /* Hide desktop menu in mobile */
+  .desktop-menu {
+    display: none;
+  }
+
+}
+
+@media (min-width: 769px) {
+  /* Hide sidenav in desktop */
+  .sidenav {
+    display: none;
+  }
+
+  /* Hide the burger menu button in desktop */
+  .menu-button {
+    display: none;
+  }
+}
+
+.navbar-line {
+  height: 1px;
+  width: 100%;
+  /* Prend toute la largeur */
+}

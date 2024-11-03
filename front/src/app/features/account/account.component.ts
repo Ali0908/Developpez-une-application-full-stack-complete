@@ -5,7 +5,7 @@ import {Observable, Subscription} from "rxjs";
 import {User} from "../../core/models/user";
 import {Router} from "@angular/router";
 import {Topic} from "../../core/models/topic";
-import {TopicService} from "../subject/service/topic.service";
+import {TopicService} from "../subjects/service/topic.service";
 import {SessionService} from "../../shared/session.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
