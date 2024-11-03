@@ -1,9 +1,10 @@
+@import "~src/styles/variables.scss";
 .feed-container{
   margin-left: 10%;
 }
 
 .card{
-  background-color: #EEEEEE;
+  background-color: $grey-color;
   width: 70%;
   cursor: pointer;
 }

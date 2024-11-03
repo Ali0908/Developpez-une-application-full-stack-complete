@@ -1,5 +1,6 @@
+@import "~src/styles/variables.scss";
 .error{
-    color: red;
+    color: $red-color;
     font-size: 0.8em;
     margin-top: 0.5em;
     margin-bottom: 0.5em;

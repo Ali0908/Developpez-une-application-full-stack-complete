@@ -3,7 +3,6 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../../service/auth.service";
 import {RegisterRequest} from "../../../../core/models/register-request";
-import {AuthSuccess} from "../../../../core/models/auth-success";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Subscription} from "rxjs";
 
@@ -45,8 +44,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
   public submit(): void {
     const registerRequest = this.form.value as RegisterRequest;
     this.registerSubscription = this.authService.register(registerRequest).subscribe({
-        next: (response: AuthSuccess) => {
-         this.matSnackBar.open(response.toString(), 'Fermer', { duration: 2000 });
+        next: () => {
+         this.matSnackBar.open('Inscription réussie', 'Fermer', { duration: 2000 });
           this.router.navigate(['/login']);
         },
         error: () => {

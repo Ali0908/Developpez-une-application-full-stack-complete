@@ -1,4 +1,4 @@
-
+@import "~src/styles/variables.scss";
 .row{
   display: flex;
   justify-content: space-around;
@@ -14,7 +14,7 @@
   display: flex;
 }
 .comment-content{
-  background-color: #EEEEEE;
+  background-color: $grey-color;
   border-radius: 15px;
   margin-left: 30%;
   width: 80%;
@@ -28,7 +28,7 @@
 }
 
 .iconClass{
-  color: #7763C5;
+  color: $purple-color;
 }
 .authorUsername{
   margin-left: 3%;
@@ -46,7 +46,7 @@
   margin-left: 3%;
 }
 .icon-style{
-  color: black;
+  color: $black-color;
 }
 
 .detail-post-card-content{

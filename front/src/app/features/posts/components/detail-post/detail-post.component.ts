@@ -23,7 +23,7 @@ export class DetailPostComponent implements OnInit, OnDestroy {
     comment: ['', [Validators.required]]
   });
   userId!: number;
-  private postSubcription!: Subscription;
+  private postSubscription!: Subscription;
   private commentSubscription!: Subscription;
 
   constructor(private sharedSrv: SharedService,
@@ -48,7 +48,7 @@ export class DetailPostComponent implements OnInit, OnDestroy {
         subscriber.next(post);
       });
     }
-     this.postSubcription = this.post$.pipe(
+     this.postSubscription = this.post$.pipe(
       map((post) => {
         this.comments$ = this.commentSrv.getComments(post.id);
       })).subscribe();
@@ -77,7 +77,7 @@ export class DetailPostComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.postSubcription?.unsubscribe();
+    this.postSubscription?.unsubscribe();
     this.commentSubscription?.unsubscribe();
   }
 }

@@ -1,3 +1,4 @@
+@import "~src/styles/variables.scss";
 .post{
   display: flex;
   justify-content: center;
@@ -16,13 +17,13 @@
 }
 
 .post-arrow-back{
-  color: black;
+  color: $black-color;
   display: flex;
   justify-content: flex-start;
   align-items: start;
 }
 
-@media(max-width: 500px) {
+@media(max-width: 800px) {
 
   .post-header{
     display: flex;

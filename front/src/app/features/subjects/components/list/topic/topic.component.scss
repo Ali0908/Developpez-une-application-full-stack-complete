@@ -1,3 +1,4 @@
+@import "~src/styles/variables.scss";
 .topic-container{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -13,12 +14,12 @@
     justify-content: center;
   }
   .disable-button{
-    background-color: red;
+    background-color: $red-color;
     cursor: crosshair;
   }
 }
 
-@media(max-width: 500px){
+@media(max-width: 800px){
   .topic-container{
       display: grid;
       grid-template-columns: repeat(1, 1fr);

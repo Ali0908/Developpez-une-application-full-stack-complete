@@ -1,10 +1,10 @@
-
+@import "~src/styles/variables.scss";
 /* app.component.css */
 
 /* Full height for sidenav container */
 .sidenav-container {
   height: 100vh;
-  background-color: #ffffff;
+  background-color: $white-color;
 }
 
 .sidenav {

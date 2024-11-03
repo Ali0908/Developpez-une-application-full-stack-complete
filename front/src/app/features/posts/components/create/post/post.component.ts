@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
 import {Topic} from "../../../../../core/models/topic";
-import {TopicService} from "../../../../subjects/service/topic.service";
+import {TopicService} from "../../../../subjects/services/topic.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {Post} from "../../../../../core/models/post";
 import {PostService} from "../../../services/post.service";

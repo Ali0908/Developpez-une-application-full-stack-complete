@@ -1,13 +1,15 @@
+@import "~src/styles/variables";
+
 /* Header toolbar styling */
 .header-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   /* Couleur de fond claire */
-  background-color: white;
+  background-color: $white-color;
   /* Couleur du texte */
-  color: #000;
-  border-bottom: 1px solid #000; /* Bottom border */;
+  color: $black-color;
+  border-bottom: 1px solid $black-color; /* Bottom border */;
 }
 
 #user-account {
@@ -17,7 +19,7 @@
 
 /* Desktop menu styling */
 .desktop-menu a {
-  color: black;
+  color: $black-color;
   margin-right: 15px;
   text-decoration: none;
 }

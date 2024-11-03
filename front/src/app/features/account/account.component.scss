@@ -44,7 +44,7 @@
   box-shadow: none;
 }
 
-@media(max-width: 500px){
+@media(max-width: 800px){
   .account-topic-container{
     grid-template-columns: repeat(1, 1fr);
   }

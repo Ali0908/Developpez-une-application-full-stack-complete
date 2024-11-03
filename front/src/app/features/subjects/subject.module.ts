@@ -7,7 +7,7 @@ import {NgModule} from "@angular/core";
 import {AuthRoutingModule} from "../auth/auth-routing.module";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {TopicComponent} from "./component/topic/topic.component";
+import {TopicComponent} from "./components/list/topic/topic.component";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 
