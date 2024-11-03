@@ -17,6 +17,7 @@ import {filter} from "rxjs";
 export class AppComponent implements OnInit{
   public showMenu: boolean = false;
   public showHeaderLinks: boolean = false;
+  public changeColorLink: boolean = false;
   @ViewChild('sidenav') sidenav!: MatSidenav;
   private navEvent!: NavigationEnd;
 
@@ -46,15 +47,19 @@ export class AppComponent implements OnInit{
     if (url === '/') {
       this.showMenu = false;
       this.showHeaderLinks = false;
+      this.changeColorLink = false;
     } else if ((url === '/login' || url === '/register') && !isMobileScreen) {
       this.showMenu = true;
       this.showHeaderLinks = false;
+      this.changeColorLink = true;
     } else if ((url === '/login' || url === '/register') && isMobileScreen) {
       this.showMenu = false;
       this.showHeaderLinks = false;
+      this.changeColorLink = false;
     } else {
       this.showMenu = true;
       this.showHeaderLinks = true;
+      this.changeColorLink = false;
     }
     this.cd.detectChanges();
   }

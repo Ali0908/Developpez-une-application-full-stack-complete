@@ -9,6 +9,6 @@ import {MatSidenav} from "@angular/material/sidenav";
 export class NavbarComponent {
   @Input() sidenav!: MatSidenav;
   @Input() showHeaderLinks!:boolean;
+  @Input() changeColorLink!:boolean;
 
-  constructor() { }
 }
