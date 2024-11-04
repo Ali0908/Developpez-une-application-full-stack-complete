@@ -7,6 +7,7 @@ import {LoginRequest} from "../../../../core/models/login-request";
 import {SessionInformation} from "../../../../core/models/session-information";
 import {SessionService} from "../../../../shared/session.service";
 import {Subscription} from "rxjs";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit, OnDestroy {
               private fb: FormBuilder,
               private router: Router,
               private sessionService: SessionService,
-              private cd: ChangeDetectorRef
+              private cd: ChangeDetectorRef,
+              private matSnackBar: MatSnackBar
               ) {
   }
 
@@ -55,9 +57,13 @@ export class LoginComponent implements OnInit, OnDestroy {
           next: (user: SessionInformation) => {
             this.sessionService.logIn(user);
             this.router.navigate(['/posts/feed']);
+            this.matSnackBar.open('Connexion réussie', 'Fermer', { duration: 2000 });
+          },
+          error: () => {
+            this.matSnackBar.open('Erreur lors de la connexion', 'Fermer', { duration: 2000 });
           }
         });
-        error: () => this.onError = true;
+
       }
     });
   }

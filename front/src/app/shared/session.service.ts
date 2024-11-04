@@ -16,12 +16,19 @@ export class SessionService {
     this.sessionInformation = user;
     this.isLogged = true;
     localStorage.setItem('sessionInformation', JSON.stringify(user));
-    // this.next();
   }
 
    logOut(): void {
     this.sessionInformation = undefined;
     this.isLogged = false;
-    this.authService.logout().subscribe();
+    this.authService.logout().subscribe({
+      next: () => {
+        localStorage.removeItem('sessionInformation');
+      },
+      error: (message: string) => {
+        localStorage.removeItem('sessionInformation');
+        console.error(message);
+      },
+    });
   }
 }

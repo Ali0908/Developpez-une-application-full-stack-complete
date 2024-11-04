@@ -62,10 +62,9 @@ export class AccountComponent implements OnInit, OnDestroy {
   }
 
   logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('sessionInformation');
-    localStorage.removeItem('selectedPost');
     this.sessionService.logOut();
+    localStorage.removeItem('token');
+    localStorage.removeItem('selectedPost');
     this.matSnackBar.open('Déconnexion réussie', 'Fermer', { duration: 2000 });
     this.router.navigate(['']);
   }

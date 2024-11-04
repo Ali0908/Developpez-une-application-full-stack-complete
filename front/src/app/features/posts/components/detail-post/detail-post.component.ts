@@ -61,14 +61,28 @@ export class DetailPostComponent implements OnInit, OnDestroy {
     this.commentCreateSubscription = this.commentSrv.create(comment).subscribe({
       next: (message: string) => {
         this.matSnackBar.open(message, 'Fermer', { duration: 2000 });
+        // Premier essai de reset du formulaire
         // Reset form  done but required message is displayed
-        this.form.reset();
-        this.comments$ = this.commentSrv.getComments(this.post.id);
-        this.cd.detectChanges();
+        // this.form.reset();
+        // this.comments$ = this.commentSrv.getComments(this.post.id);
+        // this.cd.detectChanges();
+
+        // Second essai de reset du formulaire
+        // this.form.reset({ comment: '' });
+        // this.form.get('comment')?.markAsUntouched();
+        // this.comments$ = this.commentSrv.getComments(this.post.id);
+
+        // Troisième essai de reset du formulaire
+        // this.form.get('comment')?.setValue('');
+        // this.form.get('comment')?.markAsPristine();
+        // this.form.get('comment')?.markAsUntouched();
+        // this.comments$ = this.commentSrv.getComments(this.post.id);
+        // this.cd.detectChanges();
+        location.reload();
       },
       error: () => {
         this.matSnackBar.open('Commentaire non créé', 'Fermer', { duration: 2000 });
-      }
+      },
     });
   }
 

@@ -4,12 +4,12 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {NgModule} from "@angular/core";
-import {AuthRoutingModule} from "../auth/auth-routing.module";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TopicComponent} from "./components/list/topic/topic.component";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import {AuthRoutingModule} from "../auth/auth-routing.module";
 
 
 const materialModules = [

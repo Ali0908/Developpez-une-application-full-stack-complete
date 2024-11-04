@@ -32,7 +32,9 @@ export class AuthService {
   public updateMe(user: User): Observable<User> {
     return this.httpClient.put<User>(`${environment.apiCst}${this.pathService}/me`, user);
   }
-  public logout(): Observable<String> {
-    return this.httpClient.delete<String>(`${environment.apiCst}${this.pathService}/logout`, {});
+  public logout(): Observable<any> {
+    return this.httpClient.delete<any>(`${environment.apiCst}${this.pathService}/logout`, {
+      responseType: 'text' as 'json'
+    });
   }
 }
