@@ -12,11 +12,11 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./topic.component.scss']
 })
 export class TopicComponent implements OnInit, OnDestroy {
-  topics$: Observable<Topic[]> = this.topicSrv.getAll();
-  topicsByUser$!: Observable<Topic[]>;
-  userId!: number;
+  public topics$: Observable<Topic[]> = this.topicSrv.getAll();
+  public topicsByUser$!: Observable<Topic[]>;
+  private userId!: number;
   private topicSubscription!: Subscription;
-  subscribedTopics: Map<number, boolean> = new Map();
+  public subscribedTopics: Map<number, boolean> = new Map();
   constructor( private topicSrv: TopicService,
                private sessionService: SessionService,
                private matSnackBar: MatSnackBar,

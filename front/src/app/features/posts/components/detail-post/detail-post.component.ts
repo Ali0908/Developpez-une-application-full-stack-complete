@@ -1,7 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {SharedService} from "../../../../shared/shared.service";
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {CommentService} from "../../services/comment.service";
-import {map} from "rxjs/operators";
 import {Observable, Subscription} from "rxjs";
 import {Comment} from "../../../../core/models/comment";
 import {FormBuilder, Validators} from "@angular/forms";
@@ -17,58 +15,56 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class DetailPostComponent implements OnInit, OnDestroy {
 
-  post$ = this.sharedSrv.postDetail$;
-  comments$!: Observable<Comment[]>;
-  form = this.fb.group({
+  public post!: Feed;
+  public comments$!: Observable<Comment[]>;
+  public form = this.fb.group({
     comment: ['', [Validators.required]]
   });
-  userId!: number;
-  private postSubscription!: Subscription;
+  private userId!: number;
   private commentSubscription!: Subscription;
+  private commentCreateSubscription!: Subscription;
 
-  constructor(private sharedSrv: SharedService,
+  constructor(
               private commentSrv: CommentService,
               private fb: FormBuilder,
               private sessionService: SessionService,
-              private matSnackBar: MatSnackBar) {
+              private matSnackBar: MatSnackBar,
+              private cd: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
+
     const savedSession = localStorage.getItem('sessionInformation');
     if (savedSession) {
       this.sessionService.sessionInformation = JSON.parse(savedSession);
       this.userId = this.sessionService?.sessionInformation?.userId as number;
     }
 
-    // Récupère le post depuis localStorage si `post$` est undefined
     const savedPost = localStorage.getItem('selectedPost');
-    if (!this.post$ && savedPost) {
-      const post = JSON.parse(savedPost) as Feed;
-      this.post$ = new Observable<Feed>((subscriber) => {
-        subscriber.next(post);
-      });
+    if(savedPost){
+      this.post = JSON.parse(savedPost) as Feed;
+      this.comments$ = this.commentSrv.getComments(this.post.id);
     }
-     this.postSubscription = this.post$.pipe(
-      map((post) => {
-        this.comments$ = this.commentSrv.getComments(post.id);
-      })).subscribe();
 
-    this.comments$.subscribe({
+    this.commentSubscription = this.comments$.subscribe({
       next: () => {}
     });
     }
 
-  submit(postId: number) {
+  submit(postId: number): void {
     const comment: CommentRequest = <CommentRequest>{
       content: this.form.value.comment,
       date: new Date(),
       postId: postId,
       authorId: this.userId
     };
-    this.commentSubscription = this.commentSrv.create(comment).subscribe({
+    this.commentCreateSubscription = this.commentSrv.create(comment).subscribe({
       next: (message: string) => {
         this.matSnackBar.open(message, 'Fermer', { duration: 2000 });
-        location.reload();
+        // Reset form  done but required message is displayed
+        this.form.reset();
+        this.comments$ = this.commentSrv.getComments(this.post.id);
+        this.cd.detectChanges();
       },
       error: () => {
         this.matSnackBar.open('Commentaire non créé', 'Fermer', { duration: 2000 });
@@ -77,7 +73,7 @@ export class DetailPostComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.postSubscription?.unsubscribe();
     this.commentSubscription?.unsubscribe();
+    this.commentCreateSubscription?.unsubscribe();
   }
 }

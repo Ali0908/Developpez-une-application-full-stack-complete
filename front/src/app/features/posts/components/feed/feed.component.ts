@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import {SharedService} from "../../../../shared/shared.service";
 import {Feed} from "../../../../core/models/feed";
 import {Observable} from "rxjs";
 import {PostService} from "../../services/post.service";
@@ -13,13 +12,12 @@ import {SessionService} from "../../../../shared/session.service";
   styleUrls: ['./feed.component.scss']
 })
 export class FeedComponent implements OnInit {
-  userId!: number;
-  feed$!: Observable<Feed[]>;
-  arrowDownward = true;
-  arrowUpward = false;
+  private userId!: number;
+  public feed$!: Observable<Feed[]>;
+  public arrowDownward: boolean = true;
+  public arrowUpward: boolean = false;
 
-  constructor( private sharedSrv: SharedService,
-               private postSrv: PostService,
+  constructor(  private postSrv: PostService,
                private router: Router,
                private sessionService: SessionService) {
   }
@@ -34,17 +32,16 @@ export class FeedComponent implements OnInit {
     }
   }
 
-  navigateToCreatePost() {
+  navigateToCreatePost(): void {
     this.router.navigate(['/posts/create']);
   }
 
-  navigateToDetailPost(post: Feed) {
-    this.sharedSrv.getDetailPost(post);
-    localStorage.setItem('selectedPost', JSON.stringify(post)); // Enregistre le post sélectionné dans localStorage
+  navigateToDetailPost(post: Feed): void {
+    localStorage.setItem('selectedPost', JSON.stringify(post));
     this.router.navigate(['/posts', post.id]);
   }
 
-  toggleSort() {
+  toggleSort(): void {
     if (this.arrowDownward) {
       this.feed$ = this.postSrv.getFeed(this.userId).pipe(
         map((feed: Feed[]) => feed.sort((a, b) => {

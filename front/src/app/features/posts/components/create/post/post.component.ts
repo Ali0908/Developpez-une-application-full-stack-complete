@@ -16,12 +16,12 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class PostComponent implements OnInit, OnDestroy {
   public topics$: Observable<Topic[]> = this.topicSrv.getAll();
-  form = this.fb.group({
+  public form = this.fb.group({
     topic: ['', [Validators.required]],
     postTitle: ['', [Validators.required]],
     postContent: ['', [Validators.required]]
   });
-  userId!: number;
+  private userId!: number;
   private postSubscription!: Subscription;
 
   constructor( private topicSrv: TopicService,
@@ -38,7 +38,7 @@ export class PostComponent implements OnInit, OnDestroy {
 
   }
 
-  submit() {
+  submit(): void {
     const postRequest: Post = <Post>{
       date: new Date(),
       topicId: Number(this.form.value.topic)!,

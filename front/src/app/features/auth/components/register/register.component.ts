@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   });
   public showLogo: boolean = false;
   private registerSubscription!: Subscription;
-  public hide = true;
+  public hide: boolean = true;
 
   constructor(
     private authService: AuthService,

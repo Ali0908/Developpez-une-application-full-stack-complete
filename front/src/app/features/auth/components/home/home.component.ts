@@ -11,11 +11,11 @@ export class HomeComponent {
   constructor(private router: Router) {
   }
 
-  navigateToRegister() {
+  navigateToRegister(): void {
     this.router.navigate(['register']);
   }
 
-  navigateToLogin() {
+  navigateToLogin(): void {
     this.router.navigate(['login']);
   }
 }

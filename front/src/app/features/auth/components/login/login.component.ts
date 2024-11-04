@@ -14,14 +14,14 @@ import {Subscription} from "rxjs";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  public hide = true;
-  public onError = false;
+  public hide: boolean = true;
+  public onError: boolean = false;
 
   public form = this.fb.group({
     identifier: ['', [Validators.required]],
     password: ['', [Validators.required]]
   });
-  public showLogo = false;
+  public showLogo: boolean = false;
   private loginSubscription!: Subscription;
 
   constructor(private authService: AuthService,
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy {
               ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.checkScreenSize();
   }
   // Listen for window resize events
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.router.navigate(['/posts/feed']);
           }
         });
-        error: () => this.onError = true
+        error: () => this.onError = true;
       }
     });
   }

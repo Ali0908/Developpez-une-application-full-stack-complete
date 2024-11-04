@@ -21,13 +21,13 @@ export class AccountComponent implements OnInit, OnDestroy {
     password: ['', [Validators.required,Validators.minLength(8),
       Validators.pattern(/^(?=.*[A-Z]).*(?=.*[a-z]).*(?=.*[!@#$%^&*()_+\-=\[\]{};',.:\/?]).{8,}$/)]]
   });
-  userId!: number;
-  username!: string;
-  email!: string;
-  topicsSubscribed$!: Observable<Topic[]>;
+  private userId!: number;
+  public username!: string;
+  public email!: string;
+  public topicsSubscribed$!: Observable<Topic[]>;
   private updateMeSubscription!: Subscription;
   private unsubscribeTopicSubscription!: Subscription;
-  hide = true;
+  public hide: boolean = true;
 
   constructor(private fb: FormBuilder,
               private authSrv: AuthService,
@@ -48,12 +48,11 @@ export class AccountComponent implements OnInit, OnDestroy {
     }
   }
 
-  submit() {
+  submit(): void {
     const modifiedUser = this.form.value as User;
     this.updateMeSubscription= this.authSrv.updateMe(modifiedUser).subscribe({
       next: () => {
         this.matSnackBar.open('Compte mis à jour', 'Fermer', { duration: 2000 });
-        // Déconnecter le user si la modification est réussie
         this.sessionService.logOut();
       },
       error: () => {
@@ -62,17 +61,16 @@ export class AccountComponent implements OnInit, OnDestroy {
     });
   }
 
-  logout() {
-    this.authSrv.logout();
-    this.sessionService.logOut();
-    this.matSnackBar.open('Déconnexion réussie', 'Fermer', { duration: 2000 });
+  logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('sessionInformation');
     localStorage.removeItem('selectedPost');
+    this.sessionService.logOut();
+    this.matSnackBar.open('Déconnexion réussie', 'Fermer', { duration: 2000 });
     this.router.navigate(['']);
   }
 
-  unsubscribe(topicId: number) {
+  unsubscribe(topicId: number): void {
     this.unsubscribeTopicSubscription =  this.topicSrv.unsubscribeToTopic({userId: this.userId, topicId: topicId}).subscribe({
       next: () => {
         this.matSnackBar.open('Désabonnement réussi', 'Fermer', { duration: 2000 });
