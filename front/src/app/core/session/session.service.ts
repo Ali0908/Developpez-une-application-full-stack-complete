@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {SessionInformation} from "../core/models/session-information";
-import {AuthService} from "../features/auth/service/auth.service";
+import {SessionInformation} from "../models/session-information";
+import {AuthService} from "../../features/auth/service/auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -25,9 +25,8 @@ export class SessionService {
       next: () => {
         localStorage.removeItem('sessionInformation');
       },
-      error: (message: string) => {
+      error: () => {
         localStorage.removeItem('sessionInformation');
-        console.error(message);
       },
     });
   }

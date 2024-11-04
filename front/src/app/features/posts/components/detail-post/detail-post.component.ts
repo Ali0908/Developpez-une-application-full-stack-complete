@@ -4,7 +4,7 @@ import {Observable, Subscription} from "rxjs";
 import {Comment} from "../../../../core/models/comment";
 import {FormBuilder, Validators} from "@angular/forms";
 import {CommentRequest} from "../../../../core/models/comment-request";
-import {SessionService} from "../../../../shared/session.service";
+import {SessionService} from "../../../../core/session/session.service";
 import {Feed} from "../../../../core/models/feed";
 import {MatSnackBar} from "@angular/material/snack-bar";
 

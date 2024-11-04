@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {PostService} from "../../services/post.service";
 import {Router} from "@angular/router";
 import {map} from "rxjs/operators";
-import {SessionService} from "../../../../shared/session.service";
+import {SessionService} from "../../../../core/session/session.service";
 
 @Component({
   selector: 'app-feed',

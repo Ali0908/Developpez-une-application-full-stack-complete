@@ -5,7 +5,7 @@ import { Router} from "@angular/router";
 import {AuthSuccess} from "../../../../core/models/auth-success";
 import {LoginRequest} from "../../../../core/models/login-request";
 import {SessionInformation} from "../../../../core/models/session-information";
-import {SessionService} from "../../../../shared/session.service";
+import {SessionService} from "../../../../core/session/session.service";
 import {Subscription} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
@@ -59,12 +59,10 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.router.navigate(['/posts/feed']);
             this.matSnackBar.open('Connexion réussie', 'Fermer', { duration: 2000 });
           },
-          error: () => {
-            this.matSnackBar.open('Erreur lors de la connexion', 'Fermer', { duration: 2000 });
-          }
         });
-
-      }
+      }, error: () => {
+        this.matSnackBar.open('Email ou mot de passe invalide', 'Fermer', { duration: 2000 });
+       }
     });
   }
 

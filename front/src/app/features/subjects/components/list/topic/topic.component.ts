@@ -3,7 +3,7 @@ import {combineLatest, Observable, Subscription} from "rxjs";
 import {Topic} from "../../../../../core/models/topic";
 import {TopicService} from "../../../services/topic.service";
 import {SubscriptionTopic} from "../../../../../core/models/subscription-topic";
-import {SessionService} from "../../../../../shared/session.service";
+import {SessionService} from "../../../../../core/session/session.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({

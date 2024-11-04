@@ -6,7 +6,7 @@ import {User} from "../../core/models/user";
 import {Router} from "@angular/router";
 import {Topic} from "../../core/models/topic";
 import {TopicService} from "../subjects/services/topic.service";
-import {SessionService} from "../../shared/session.service";
+import {SessionService} from "../../core/session/session.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({

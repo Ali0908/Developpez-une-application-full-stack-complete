@@ -6,7 +6,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {Post} from "../../../../../core/models/post";
 import {PostService} from "../../../services/post.service";
 import {Router} from "@angular/router";
-import {SessionService} from "../../../../../shared/session.service";
+import {SessionService} from "../../../../../core/session/session.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
