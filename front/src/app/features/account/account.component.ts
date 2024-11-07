@@ -49,11 +49,13 @@ export class AccountComponent implements OnInit, OnDestroy {
   }
 
   submit(): void {
-    const modifiedUser = this.form.value as User;
+    const modifiedUser = this.form.value as User
     this.updateMeSubscription= this.authSrv.updateMe(modifiedUser).subscribe({
       next: () => {
         this.matSnackBar.open('Compte mis à jour', 'Fermer', { duration: 2000 });
+        this.form.reset();
         this.sessionService.logOut();
+        this.router.navigate(['login']);
       },
       error: () => {
         this.matSnackBar.open('Erreur lors de la mise à jour', 'Fermer', { duration: 2000 });

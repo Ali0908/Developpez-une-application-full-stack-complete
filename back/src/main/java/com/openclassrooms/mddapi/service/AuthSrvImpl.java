@@ -87,9 +87,16 @@ public class AuthSrvImpl implements AuthService {
 
     public Optional<UserDtoResponse> update(UserDto userDto) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        user.setUsername(userDto.getUsername());
-        user.setEmail(userDto.getEmail());
-        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        if (!userDto.getUsername().isEmpty()) {
+            user.setUsername(userDto.getUsername());
+        }
+        if (!userDto.getEmail().isEmpty()) {
+            user.setEmail(userDto.getEmail());
+        }
+        if (!userDto.getPassword().isEmpty()) {
+            user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        }
+        System.out.println("User: " + user);
         userRepository.save(user);
         return Optional.of(new UserDtoResponse(
                 user.getId(),
@@ -97,6 +104,7 @@ public class AuthSrvImpl implements AuthService {
                 user.getEmail()
         ));
     }
+
     private void revokeAllUserTokens(User user) {
         var validUserTokens = tokenRepository.findAllValidTokenByUser(Math.toIntExact(user.getId()));
         if (validUserTokens.isEmpty())

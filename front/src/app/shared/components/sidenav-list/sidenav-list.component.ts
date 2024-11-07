@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatSidenav} from "@angular/material/sidenav";
 
 @Component({
@@ -9,12 +9,4 @@ import {MatSidenav} from "@angular/material/sidenav";
 export class SidenavListComponent {
 
   @Input() sidenav!: MatSidenav;
-
-  constructor() {
-  }
-
-  public onSidenavClose = (): void => {
-    //this.sidenavClose.emit();
-  }
-
 }

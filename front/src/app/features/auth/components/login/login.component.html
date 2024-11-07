@@ -14,7 +14,7 @@
         <h3>Email ou nom d'utilisateur</h3>
         <mat-form-field appearance="outline">
           <input matInput formControlName="identifier">
-          <mat-error *ngIf="form.get('identifier')?.hasError('identifier')">Merci de saisir un email ou un nom d'utilisateur</mat-error>
+          <mat-error *ngIf="form.get('identifier')?.hasError('required')">Merci de saisir un email ou un nom d'utilisateur</mat-error>
         </mat-form-field>
         <h3>Password</h3>
         <mat-form-field appearance="outline">
@@ -27,7 +27,6 @@
         </mat-form-field>
         <mat-card-actions>
           <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Se connecter</button>
-<!--          <p *ngIf="onError" class="error">Email/Mot de passe non enregistré</p>-->
         </mat-card-actions>
       </mat-card-content>
     </form>

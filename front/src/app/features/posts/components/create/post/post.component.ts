@@ -49,7 +49,7 @@ export class PostComponent implements OnInit, OnDestroy {
     this.postSubscription = this.postSrv.create(postRequest).subscribe({
       next: (message: string) => {
         this.matSnackBar.open(message, 'Fermer', { duration: 2000 });
-        this.router.navigate(['/feed']);
+        this.router.navigate(['/posts/feed']);
       },
       error: () => {
         this.matSnackBar.open('Post non créé', 'Fermer', { duration: 2000 });

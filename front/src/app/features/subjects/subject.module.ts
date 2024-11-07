@@ -9,7 +9,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TopicComponent} from "./components/list/topic/topic.component";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
-import {AuthRoutingModule} from "../auth/auth-routing.module";
+import {SubjectRoutingModule} from "./subject-routing.module";
 
 
 const materialModules = [
@@ -26,7 +26,7 @@ const materialModules = [
     TopicComponent
   ],
   imports: [
-    AuthRoutingModule,
+    SubjectRoutingModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
