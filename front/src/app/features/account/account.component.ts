@@ -16,9 +16,9 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class AccountComponent implements OnInit, OnDestroy {
   public form = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    username: ['', [Validators.required]],
-    password: ['', [Validators.required,Validators.minLength(8),
+    email: ['', [Validators.email]],
+    username: ['',],
+    password: ['', [Validators.minLength(8),
       Validators.pattern(/^(?=.*[A-Z]).*(?=.*[a-z]).*(?=.*[!@#$%^&*()_+\-=\[\]{};',.:\/?]).{8,}$/)]]
   });
   private userId!: number;
