@@ -6,6 +6,7 @@ import com.openclassrooms.mddapi.service.interfaces.TopicService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class TopicController {
 
     @PostMapping("/subscribe")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<String> subscribeToTopic(@RequestBody SubscribeToTopicDto dto) {
+    public ResponseEntity<String> subscribeToTopic(@RequestBody @Validated SubscribeToTopicDto dto) {
         topicService.subscribeToTopic(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body("Abonnement réussi");
     }

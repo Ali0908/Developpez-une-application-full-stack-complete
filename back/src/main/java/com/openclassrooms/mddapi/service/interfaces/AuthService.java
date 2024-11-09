@@ -3,7 +3,7 @@ package com.openclassrooms.mddapi.service.interfaces;
 import com.openclassrooms.mddapi.dto.request.RegisterDtoRequest;
 import com.openclassrooms.mddapi.dto.request.UserDto;
 import com.openclassrooms.mddapi.dto.response.AuthDtoResponse;
-import com.openclassrooms.mddapi.dto.response.LoginDtoRequest;
+import com.openclassrooms.mddapi.dto.request.LoginDtoRequest;
 import com.openclassrooms.mddapi.dto.response.UserDtoResponse;
 
 import java.util.Optional;

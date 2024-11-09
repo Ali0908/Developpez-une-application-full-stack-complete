@@ -6,6 +6,7 @@ import com.openclassrooms.mddapi.service.interfaces.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class PostController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<String> create(@RequestBody PostDto postDto) {
+    public ResponseEntity<String> create(@RequestBody @Validated PostDto postDto) {
          postService.create(postDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("Post créé");
     }

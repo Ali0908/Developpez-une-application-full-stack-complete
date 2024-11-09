@@ -3,22 +3,17 @@ package com.openclassrooms.mddapi.controller;
 import com.openclassrooms.mddapi.dto.request.RegisterDtoRequest;
 import com.openclassrooms.mddapi.dto.request.UserDto;
 import com.openclassrooms.mddapi.dto.response.AuthDtoResponse;
-import com.openclassrooms.mddapi.dto.response.LoginDtoRequest;
+import com.openclassrooms.mddapi.dto.request.LoginDtoRequest;
 import com.openclassrooms.mddapi.dto.response.UserDtoResponse;
-import com.openclassrooms.mddapi.exceptions.BadRequestException;
 import com.openclassrooms.mddapi.service.interfaces.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.validation.ObjectError;
-
 
 
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -35,7 +30,7 @@ public class AuthController {
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.CREATED)
     public Optional<AuthDtoResponse> login(
-            @RequestBody @Validated LoginDtoRequest loginRequest, BindingResult result) {
+            @RequestBody @Validated LoginDtoRequest loginRequest) {
 
         return authSrv.login(loginRequest);
     }

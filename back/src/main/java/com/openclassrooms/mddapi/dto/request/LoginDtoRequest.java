@@ -1,6 +1,5 @@
-package com.openclassrooms.mddapi.dto.response;
+package com.openclassrooms.mddapi.dto.request;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -14,8 +13,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LoginDtoRequest {
 
-    @NotEmpty(message = "error")
+    @NotBlank(message = "Username or Email is required")
     private String identifier;
-    @NotBlank(message = "error")
+    @NotBlank(message = "Password is required")
     String password;
 }

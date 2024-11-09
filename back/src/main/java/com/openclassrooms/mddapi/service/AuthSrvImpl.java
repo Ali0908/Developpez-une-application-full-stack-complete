@@ -4,7 +4,7 @@ import com.openclassrooms.mddapi.config.TokenType;
 import com.openclassrooms.mddapi.dto.request.RegisterDtoRequest;
 import com.openclassrooms.mddapi.dto.request.UserDto;
 import com.openclassrooms.mddapi.dto.response.AuthDtoResponse;
-import com.openclassrooms.mddapi.dto.response.LoginDtoRequest;
+import com.openclassrooms.mddapi.dto.request.LoginDtoRequest;
 import com.openclassrooms.mddapi.dto.response.UserDtoResponse;
 import com.openclassrooms.mddapi.model.Token;
 import com.openclassrooms.mddapi.model.User;
