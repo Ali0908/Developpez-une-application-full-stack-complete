@@ -1,8 +1,8 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {CommentService} from "../../services/comment.service";
 import {Observable, Subscription} from "rxjs";
 import {Comment} from "../../../../core/models/comment";
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators, FormGroupDirective} from "@angular/forms";
 import {CommentRequest} from "../../../../core/models/comment-request";
 import {SessionService} from "../../../../core/session/session.service";
 import {Feed} from "../../../../core/models/feed";
@@ -17,12 +17,14 @@ export class DetailPostComponent implements OnInit, OnDestroy {
 
   public post!: Feed;
   public comments$!: Observable<Comment[]>;
-  public form = this.fb.group({
+  public form: FormGroup = this.fb.group({
     comment: ['', [Validators.required]]
   });
   private userId!: number;
   private commentSubscription!: Subscription;
   private commentCreateSubscription!: Subscription;
+
+  @ViewChild(FormGroupDirective) formDirective!: FormGroupDirective;
 
   constructor(
               private commentSrv: CommentService,
@@ -60,8 +62,10 @@ export class DetailPostComponent implements OnInit, OnDestroy {
     };
     this.commentCreateSubscription = this.commentSrv.create(comment).subscribe({
       next: (message: string) => {
+        this.formDirective.resetForm();
+        this.comments$ = this.commentSrv.getComments(this.post.id);
         this.matSnackBar.open(message, 'Fermer', { duration: 2000 });
-        location.reload();
+        this.cd.detectChanges();
       },
       error: () => {
         this.matSnackBar.open('Commentaire non créé', 'Fermer', { duration: 2000 });
