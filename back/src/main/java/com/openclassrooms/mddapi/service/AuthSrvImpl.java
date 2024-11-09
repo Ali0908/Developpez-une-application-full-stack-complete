@@ -87,16 +87,24 @@ public class AuthSrvImpl implements AuthService {
 
     public Optional<UserDtoResponse> update(UserDto userDto) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        boolean userUpdated = false;
         if (!userDto.getUsername().isEmpty()) {
             user.setUsername(userDto.getUsername());
+            userUpdated = true;
         }
         if (!userDto.getEmail().isEmpty()) {
             user.setEmail(userDto.getEmail());
+            userUpdated = true;
+
         }
         if (!userDto.getPassword().isEmpty()) {
             user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+            userUpdated = true;
         }
-        System.out.println("User: " + user);
+
+        if(userUpdated){
+            revokeAllUserTokens(user);
+        }
         userRepository.save(user);
         return Optional.of(new UserDtoResponse(
                 user.getId(),

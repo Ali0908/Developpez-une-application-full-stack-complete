@@ -18,7 +18,7 @@ public class Topic {
     private Integer id;
     private String name;
     private String description;
-    @ManyToMany(mappedBy = "topics")
+    @ManyToMany(mappedBy = "topics", fetch = FetchType.EAGER)
     public List<User> user;
 
     @OneToMany(mappedBy = "topic")
