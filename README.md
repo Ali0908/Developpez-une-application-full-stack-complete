@@ -1,25 +1,108 @@
 # P6-Full-Stack-reseau-dev
 
-## Front
+## Presentation
+MDD (Monde de Dév) is an application that aims to help developers looking for work, through matchmaking, by encouraging connections and collaboration between peers with common interests.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+## Prerequisites
 
-Don't forget to install your node_modules before starting (`npm install`).
+Before starting, make sure you have the following tools installed on your machine:
 
-### Development server
+    Java Development Kit (JDK) 17 or higher
+    Maven
+    MariaDB
+    Git
+    Node and npm
+    Angular CLI 14 or higher
+## Installation and Running the Project
+## 1. Clone the Repository
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Clone the GitHub repository to your local machine using the following command:
 
-### Build
+git clone https://github.com/Ali0908/Developpez-une-application-full-stack-complete.git
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+cd Developpez-une-application-full-stack-complete.git
 
-### Where to start
+## 2. Configure the Database
+Installing MariaDB
 
-As you may have seen if you already started the app, a simple home page containing a logo, a title and a button is available. If you take a look at its code (in the `home.component.html`) you will see that an external UI library is already configured in the project.
+If MariaDB is not already installed, you can install it by following these steps:
 
-This library is `@angular/material`, it's one of the most famous in the angular ecosystem. As you can see on their docs (https://material.angular.io/), it contains a lot of highly customizable components that will help you design your interfaces quickly.
+For Linux:
 
-Note: I recommend to use material however it's not mandatory, if you prefer you can get ride of it.
+    sudo apt update
+    
+    sudo apt install mariadb-server
+    
+    sudo systemctl start mariadb
+    
+    sudo systemctl enable mariadb
 
-Good luck!
+For macOS:
+
+Use Homebrew:
+
+    brew install mariadb
+    brew services start mariadb
+
+For Windows:
+
+Download and install MariaDB from the official site.
+Database Configuration
+
+Connect to MariaDB:
+
+    mysql -u root -p
+Create a new database and user:
+
+    CREATE DATABASE your_database_name;
+    CREATE USER 'your_username'@'localhost' IDENTIFIED BY 'your_password';
+    GRANT ALL PRIVILEGES ON your_database_name.* TO 'your_username'@'localhost';
+    FLUSH PRIVILEGES;
+
+Configure the database connection settings in the application.properties or application.yml file of the Spring Boot project:
+
+application.properties:
+
+    spring.datasource.url=jdbc:mariadb://localhost:3306/your_database_name
+    spring.datasource.username=your_username
+    spring.datasource.password=your_password
+    spring.jpa.hibernate.ddl-auto=update
+
+application.yml:
+spring:
+datasource:
+
+        url: jdbc:mariadb://localhost:3306/your_database_name
+        username: your_username
+        password: your_password
+      jpa:
+        hibernate:
+          ddl-auto: update
+### 3. Build, Run and Test the Application
+
+### BackEnd
+Use Maven to build, run and test the application:
+
+Install the project dependencies:
+
+    mvn clean install
+Run project
+
+    mvn spring-boot:run
+
+### FrontEnd
+Use npm to install the project dependencies and run the Angular application:
+
+Install the project dependencies:
+
+    npm install
+
+Run project
+
+    ng serve
+
+### 4. Access the Application
+The backend will be running at http://localhost:8080.
+the frontend will be running at http://localhost:4200.
+
+
