@@ -65,7 +65,7 @@ export class AppComponent implements OnInit{
       this.onTopicPage = false;
       this.showMenu = true;
       this.showHeaderLinks = true;
-    } else if ((url === '/topics')  && !isMobileScreen) {
+    } else if ((url === '/subjects/topics')  && !isMobileScreen) {
       this.onPostFeedPage = false;
       this.onTopicPage = true;
       this.showMenu = true;
