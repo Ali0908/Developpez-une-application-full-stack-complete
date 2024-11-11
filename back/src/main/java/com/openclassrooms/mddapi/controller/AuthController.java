@@ -48,7 +48,8 @@ public class AuthController {
     }
 
     @PutMapping("/me")
-    public Optional<UserDtoResponse> update(@RequestBody UserDto userDto) {
-        return authSrv.update(userDto);
+    public ResponseEntity<String> update(@RequestBody UserDto userDto) {
+         authSrv.update(userDto);
+        return ResponseEntity.ok("User updated successfully");
     }
 }

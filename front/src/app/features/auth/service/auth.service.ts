@@ -29,8 +29,8 @@ export class AuthService {
     return this.httpClient.get<User>(`${environment.apiCst}${this.pathService}/me`);
   }
 
-  public updateMe(user: User): Observable<User> {
-    return this.httpClient.put<User>(`${environment.apiCst}${this.pathService}/me`, user);
+  public updateMe(user: User): Observable<string> {
+    return this.httpClient.put<string>(`${environment.apiCst}${this.pathService}/me`, user, {responseType: 'text' as 'json'});
   }
   public logout(): Observable<any> {
     return this.httpClient.delete<any>(`${environment.apiCst}${this.pathService}/logout`, {

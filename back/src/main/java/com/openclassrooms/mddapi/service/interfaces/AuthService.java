@@ -5,6 +5,7 @@ import com.openclassrooms.mddapi.dto.request.UserDto;
 import com.openclassrooms.mddapi.dto.response.AuthDtoResponse;
 import com.openclassrooms.mddapi.dto.request.LoginDtoRequest;
 import com.openclassrooms.mddapi.dto.response.UserDtoResponse;
+import org.springframework.http.ResponseEntity;
 
 import java.util.Optional;
 
@@ -42,5 +43,5 @@ public interface AuthService {
      *
      * @return {@link UserDtoResponse}
      */
-    Optional<UserDtoResponse> update(UserDto userDto);
+    ResponseEntity<String> update(UserDto userDto);
 }

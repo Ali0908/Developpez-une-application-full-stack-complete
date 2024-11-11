@@ -12,6 +12,7 @@ import com.openclassrooms.mddapi.repository.UserRepository;
 import com.openclassrooms.mddapi.repository.TokenRepository;
 import com.openclassrooms.mddapi.service.interfaces.AuthService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -85,9 +86,12 @@ public class AuthSrvImpl implements AuthService {
 
     }
 
-    public Optional<UserDtoResponse> update(UserDto userDto) {
+    public ResponseEntity<String> update(UserDto userDto) {
+        // Récupère l'utilisateur actuel depuis le SecurityContext
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         boolean userUpdated = false;
+
+        // Mise à jour des champs utilisateur si fournis
         if (!userDto.getUsername().isEmpty()) {
             user.setUsername(userDto.getUsername());
             userUpdated = true;
@@ -95,23 +99,21 @@ public class AuthSrvImpl implements AuthService {
         if (!userDto.getEmail().isEmpty()) {
             user.setEmail(userDto.getEmail());
             userUpdated = true;
-
         }
         if (!userDto.getPassword().isEmpty()) {
-            user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+             user.setPassword(passwordEncoder.encode(userDto.getPassword()));
             userUpdated = true;
         }
 
-        if(userUpdated){
+        if (userUpdated) {
+            // Enregistre les modifications de l'utilisateur en base de données
             revokeAllUserTokens(user);
+            userRepository.save(user);
         }
-        userRepository.save(user);
-        return Optional.of(new UserDtoResponse(
-                user.getId(),
-                user.getUsername(),
-                user.getEmail()
-        ));
+
+        return ResponseEntity.ok("User updated successfully");
     }
+
 
     private void revokeAllUserTokens(User user) {
         var validUserTokens = tokenRepository.findAllValidTokenByUser(Math.toIntExact(user.getId()));

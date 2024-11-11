@@ -21,6 +21,6 @@ public class Topic {
     @ManyToMany(mappedBy = "topics", fetch = FetchType.EAGER)
     public List<User> user;
 
-    @OneToMany(mappedBy = "topic")
+    @OneToMany(mappedBy = "topic", fetch = FetchType.EAGER)
     private List<Post> posts;
 }
