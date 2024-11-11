@@ -41,9 +41,9 @@ export class FeedComponent implements OnInit {
             return topics.some((topic) => topic.id === post.topicId);
           }))
         );
-      });
-    }
+    });
   }
+    }
 
   navigateToCreatePost(): void {
     this.router.navigate(['/posts/create']);
@@ -55,22 +55,32 @@ export class FeedComponent implements OnInit {
   }
 
   toggleSort(): void {
-    if (this.arrowDownward) {
-      this.feed$ = this.postSrv.getFeed(this.userId).pipe(
-        map((feed: Feed[]) => feed.sort((a, b) => {
-          return new Date(a.date).getTime() - new Date(b.date).getTime();
-        }))
-      );
-      this.arrowDownward = false;
-      this.arrowUpward = true;
-    } else {
-      this.feed$ = this.postSrv.getFeed(this.userId).pipe(
-        map((feed: Feed[]) => feed.sort((a, b) => {
-          return new Date(b.date).getTime() - new Date(a.date).getTime();
-        }))
-      );
-      this.arrowDownward = true;
-      this.arrowUpward = false;
-    }
+    // Assurez-vous que `topicsSubscribed$` a bien émis avant d'accéder aux topics
+    this.topicsSubscribed$.subscribe((topics) => {
+      if (this.arrowDownward) {
+        // Filtrer les articles par thèmes puis trier par date ascendante
+        this.feed$ = this.postSrv.getFeed(this.userId).pipe(
+          map((feed: Feed[]) =>
+            feed
+              .filter((post) => topics.some((topic) => topic.id === post.topicId))
+              .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+          )
+        );
+        this.arrowDownward = false;
+        this.arrowUpward = true;
+      } else {
+        // Filtrer les articles par thèmes puis trier par date descendante
+        this.feed$ = this.postSrv.getFeed(this.userId).pipe(
+          map((feed: Feed[]) =>
+            feed
+              .filter((post) => topics.some((topic) => topic.id === post.topicId))
+              .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+          )
+        );
+        this.arrowDownward = true;
+        this.arrowUpward = false;
+      }
+    });
   }
+
 }
