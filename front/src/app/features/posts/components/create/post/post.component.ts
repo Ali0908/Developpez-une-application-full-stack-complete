@@ -15,7 +15,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit, OnDestroy {
-  public topics$: Observable<Topic[]> = this.topicSrv.getAll();
+  public topicsSubscribed$!: Observable<Topic[]>;
   public form = this.fb.group({
     topic: ['', [Validators.required]],
     postTitle: ['', [Validators.required]],
@@ -35,6 +35,7 @@ export class PostComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userId = this.sessionService?.sessionInformation?.userId as number;
+    this.topicsSubscribed$ = this.topicSrv.getAllTopicsSubscribedByUserId(this.userId);
 
   }
 
